@@ -14,14 +14,21 @@ import { PhoneIcon,
     EmailIcon,
     ViewOffIcon ,
     ViewIcon} from '@chakra-ui/icons'
+    import { useForm } from "react-hook-form";
+
 
 const Login=()=>{
     const [show, setShow] = React.useState(false)
     const handleClick = () => setShow(!show)
-
-    const LoginHandler=(e)=>{
-        e.preventDefault();
-    }
+  
+   
+   const { register, handleSubmit, formState: { errors } } = useForm();
+  
+   const onSubmit = (data)=>{
+       console.log(data);
+       data.preventDefault();
+   };
+  
     return(<Center><Box w='400px'
     h='auto' 
     bg='#89D0CA'
@@ -32,7 +39,7 @@ const Login=()=>{
        <Text fontSize='3xl' align='center'>Bookuj.me</Text>
        <br />
        
-       <form action="submit" h='auto'>
+       <form action="submit" h='auto' onSubmit={handleSubmit(onSubmit)}>
            <Stack spacing={3}>
            
        <FormControl isRequired>
@@ -43,24 +50,32 @@ const Login=()=>{
        </FormControl>
       
       
-       <FormControl isRequired>
+      
    
        <InputGroup>
        
-     <Input
-       pr='4.5rem'
-       type={show ? 'text' : 'password'}
-       placeholder='Unesi Lozinku'
-       backgroundColor='white'
-     />
-     <InputRightElement width='4.5rem'>
-       <Button h='1.75rem' size='sm' onClick={handleClick}>
-         {show ? 'Sakrij' : 'Prikazi'}
-       </Button>
-     </InputRightElement>
-       </InputGroup>
-       </FormControl>
-       <Button type='submit' boxShadow='sm' _hover={{boxShadow:'md'}} onSubmit={LoginHandler} >Log in!</Button>
+       <Input
+        pr='4.5rem'
+        type={show ? 'text' : 'password'}
+        placeholder='Unesi Lozinku'
+        backgroundColor='white'
+        {...register("password", {
+            required: "Please enter Password!",
+            minLength: { value: 8, message: "Too Short! It needs to be at least 8 characters long!" }
+          })}
+      />
+      
+      <InputRightElement width='4.5rem'>
+        <Button h='1.75rem' size='sm' onClick={handleClick}>
+          {show ? 'Sakrij' : 'Prikazi'}
+        </Button>
+      </InputRightElement>
+      
+        </InputGroup>
+        
+        {errors.password &&<p >{errors.password.message}</p>}
+      
+       <Button type='submit' boxShadow='sm' _hover={{boxShadow:'md'} } >Log in!</Button>
        </Stack>
 
    </form>
