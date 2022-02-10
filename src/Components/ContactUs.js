@@ -13,7 +13,7 @@ import logo from '../assets/logo.png'
 
 const Contact = () => {
     return (<> <Box padding="15px"><Center>
-        <Text fontSize='6xl'>Neka se Vaš Glas Čuje!</Text>
+        <Text fontSize='6xl'>Neka se i Vaš  Glas Čuje!</Text>
     </Center>
     <Center>
             <Text fontSize='sm'>Bilo da vas zanimaju funkcije, besplatna probna verzija ili čak štampa - spremni smo da odgovorimo na sva pitanja.</Text>
