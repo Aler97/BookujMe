@@ -4,7 +4,7 @@ import Login from './Components/Login'
 import Contact from './Components/ContactUs'
 function App() {
   return (
-    <><>BookujMe</><Contact/></>
+    <><>BookujMe</></>
     
   );
 }
