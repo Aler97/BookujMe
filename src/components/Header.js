@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import {
-    Box, Image, Flex, Link, Spacer, Button, useMediaQuery, IconButton, Drawer, DrawerBody, DrawerContent, DrawerCloseButton, useDisclosure
+    Box, Image, Flex, Link, Spacer, Button, useMediaQuery, IconButton, Drawer, DrawerBody, DrawerContent, DrawerCloseButton, useDisclosure, Menu, MenuButton, MenuList, MenuItem
 } from '@chakra-ui/react';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { BiUserCircle } from 'react-icons/bi';
 import { Link as ReactLink } from 'react-router-dom';
-import Logo from '../../assets/logo.png';
-import Profile from '../../assets/profile.png';
-import SmallLogo from '../../assets/smallLogo.png';
+import Logo from '../assets/logo.png';
+import Profile from '../assets/profile.png';
+import SmallLogo from '../assets/smallLogo.png';
+import { AuthContext } from '../helpers/AuthContext';
+
+
 function Header() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+
 
     const [isLargerThan850] = useMediaQuery('(min-width: 850px)');
     const [isLargerThan450] = useMediaQuery('(min-width: 450px)');
@@ -24,19 +29,70 @@ function Header() {
             <Spacer />
             <Link fontSize={[20]} _hover={{ textDecoration: 'none', borderBottom: '1px solid black' }} as={ReactLink} to='/Kontakt'>Kontakt</Link>
             <Spacer />
-            {!isLoggedIn ? <Button as='a' href='#' border='1px solid black' fontWeight='light' bgColor='transparent' borderRadius='0' fontSize={20} py='6' _hover={{ bgColor: 'brand.normal' }} _active={{ bgColor: 'brand.normal', transform: 'scale(0.95)' }} onClick={() => { setIsLoggedIn(true) }}>Prijavi Se</Button>
+            {!isLoggedIn ? <Button as='a' href='#' border='1px solid black' fontWeight='light' bgColor='transparent' borderRadius='0' fontSize={20} py='6' _hover={{ bgColor: 'brand.normal' }} _active={{ bgColor: 'brand.normal', transform: 'scale(0.95)' }} onClick={() => { setIsLoggedIn(true) }} >Prijavi Se</Button>
                 :
-                <Link><Image src={Profile} w='60px' h='60px'></Image></Link>}
+                <Menu>
+                    <MenuButton
+                        as={Button}
+                        bgImage={Profile}
+                        bgSize='contain'
+                        bgColor='white'
+                        _hover={{ bgImage: { Profile }, bgSize: 'containe' }}
+                        _active={{ bgImage: { Profile }, bgSize: 'containe' }}
+
+                    />
+                    <MenuList>
+                        <Link as={ReactLink} to='/Profil' _hover={{ textDecoration: 'none' }}>
+                            <MenuItem>
+                                Profil
+                            </MenuItem>
+                        </Link>
+                        <Link as={ReactLink} to='/Profil' _hover={{ textDecoration: 'none' }}>
+                            <MenuItem>
+                                Postavi Oglas
+                            </MenuItem>
+                        </Link>
+                        <MenuItem color='red' fontWeight='semibold'>
+                            Odjavi Se
+                        </MenuItem>
+                    </MenuList>
+                </Menu>}
 
         </Flex> :
             <Flex justifyContent='space-evenly' alignItems='center' gap='5px'>
                 {!isLoggedIn ? <Button as='a' href='#' border='1px solid black' fontWeight='light' bgColor='transparent' borderRadius='0' fontSize={12} _hover={{ bgColor: 'brand.normal' }} _active={{ bgColor: 'brand.normal', transform: 'scale(0.95)' }}>Prijavi Se</Button>
-                    : <Link><Image src={Profile} w='30px' h='30px'></Image></Link>}
+                    : <Menu>
+                        <MenuButton
+                            as={Button}
+                            bgImage={Profile}
+                            bgSize='contain'
+                            bgColor='white'
+                            _hover={{ bgImage: { Profile }, bgSize: 'containe' }}
+                            _active={{ bgImage: { Profile }, bgSize: 'containe' }}
+
+                        />
+                        <MenuList>
+                            <Link as={ReactLink} to='/Profil' _hover={{ textDecoration: 'none' }}>
+                                <MenuItem>
+                                    Profil
+                                </MenuItem>
+                            </Link>
+                            <Link as={ReactLink} to='/Profil' _hover={{ textDecoration: 'none' }}>
+                                <MenuItem>
+                                    Postavi Oglas
+                                </MenuItem>
+                            </Link>
+                            <MenuItem color='red' fontWeight='semibold'>
+                                Odjavi Se
+                            </MenuItem>
+                        </MenuList>
+                    </Menu>
+                }
                 <IconButton ref={btnRef} bgColor='brand.normal' onClick={onOpen} aria-label='Menu' icon={<GiHamburgerMenu />} _hover={{ bgColor: 'brand.normalt' }} _active={{ bgColor: 'brand.normal' }} />
 
                 <Drawer
                     isOpen={isOpen}
-                    placement='right'
+                    placement='top'
                     onClose={onClose}
                     finalFocusRef={btnRef}
                 >
@@ -46,9 +102,9 @@ function Header() {
 
 
                         <DrawerBody display='flex' flexDirection='column' justifyContent='flex-start' alignItems='center' mt='40px' gap='10px'>
-                            <Link fontSize={[20]} _hover={{ textDecoration: 'none', borderBottom: '1px solid black' }} as={ReactLink} to='/' >Početna</Link>
-                            <Link fontSize={[20]} _hover={{ textDecoration: 'none', borderBottom: '1px solid black' }} as={ReactLink} to='/ONama' >O Nama</Link>
-                            <Link fontSize={[20]} _hover={{ textDecoration: 'none', borderBottom: '1px solid black' }} as={ReactLink} to='/Kontakt' >Kontakt</Link>
+                            <Link fontSize={[20]} _hover={{ textDecoration: 'none' }} onClick={onClose} as={ReactLink} to='/' >Početna</Link>
+                            <Link fontSize={[20]} _hover={{ textDecoration: 'none' }} onClick={onClose} as={ReactLink} to='/ONama' >O Nama</Link>
+                            <Link fontSize={[20]} _hover={{ textDecoration: 'none' }} onClick={onClose} as={ReactLink} to='/Kontakt' >Kontakt</Link>
                         </DrawerBody>
 
 
