@@ -29,7 +29,7 @@ function Header() {
             <Spacer />
             <Link fontSize={[20]} _hover={{ textDecoration: 'none', borderBottom: '1px solid black' }} as={ReactLink} to='/Kontakt'>Kontakt</Link>
             <Spacer />
-            {!isLoggedIn ? <Button as='a' href='#' border='1px solid black' fontWeight='light' bgColor='transparent' borderRadius='0' fontSize={20} py='6' _hover={{ bgColor: 'brand.normal' }} _active={{ bgColor: 'brand.normal', transform: 'scale(0.95)' }} onClick={() => { setIsLoggedIn(true) }} >Prijavi Se</Button>
+            {!isLoggedIn ? <Link as={ReactLink} to='/Prijavljivanje'><Button border='1px solid black' fontWeight='light' bgColor='transparent' borderRadius='0' fontSize={20} py='6' _hover={{ bgColor: 'brand.normal' }} _active={{ bgColor: 'brand.normal', transform: 'scale(0.95)' }} >Prijavi Se</Button></Link>
                 :
                 <Menu>
                     <MenuButton

@@ -8,8 +8,8 @@ import Contact from './components/Contact';
 import Oglasi from './components/Oglasi';
 import Oglas from './components/Oglas';
 import Profil from './components/Profil';
-import Reg from './Components/Registration.js'
-import Login from './Components/Login'
+import Reg from './components/Registration.js'
+import Login from './components/Login'
 import ProtectedRoute from './components/ProtectedRoute';
 import NotFound from './components/NotFound';
 import { AuthContext } from './helpers/AuthContext';
@@ -26,8 +26,11 @@ function App() {
           <Route path='/' element={<Home />}></Route>
           <Route path='/ONama' element={<AboutUs />}></Route>
           <Route path='/Kontakt' element={<Contact />}></Route>
+          <Route path='/Prijavljivanje' element={<Login />}></Route>
+          <Route path='/Registracija' element={<Reg />}></Route>
           <Route path='/Oglasi' element={<Oglasi />}></Route>
           <Route path='/Oglasi/:id' element={<Oglas />}></Route>
+
           <Route element={<ProtectedRoute />}>
             <Route path='/Profil' element={<Profil />} />
           </Route>
