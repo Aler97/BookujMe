@@ -12,6 +12,7 @@ Button
 } from '@chakra-ui/react';
 import { Link as ReactLink } from 'react-router-dom';
 import Triangle from '../Images/triangleimage.png';
+import Oglas from './Oglas';
 
 const Home = () => {
     return (  <><SimpleGrid
@@ -42,10 +43,26 @@ const Home = () => {
 
          <Box >
          <Stack spacing={4}>
-       <Text fontSize='2xl' padding='10%'> Vebsajt Bookuj.me nastao je sa idejom da kroz jednostavan interfejs omogući korisnicima razmjenu/trgovinu polovnih veoma očuvanih knjiga.</Text>
+       
+       
         
         </Stack>
         </Box>
+        <SimpleGrid
+        columns={{ sm: 2, md: 3}}
+         w='100%'
+        h='auto' 
+        p='10%'
+        mt='2%'
+        spacing='5%'
+        
+     >
+        <Oglas/>
+        <Oglas/>
+        <Oglas/>
+        </SimpleGrid>
+        <Center><Button mb='5%' width="20%">Svi oglasi</Button></Center>
+        
          </>);
 }
  
