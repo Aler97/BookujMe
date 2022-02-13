@@ -1,3 +1,5 @@
+
+
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './Components/Header';
@@ -15,10 +17,15 @@ import NotFound from './Components/NotFound';
 import { AuthContext } from './helpers/AuthContext';
 
 
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
+
+   
+    
+
     <Router>
       <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
         <Header />
@@ -39,6 +46,7 @@ function App() {
       </AuthContext.Provider>
       <Footer />
     </Router>
+
 
   );
 }
