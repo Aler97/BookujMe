@@ -9,6 +9,7 @@ SimpleGrid,
 Link
 
 } from '@chakra-ui/react';
+import { Link as ReactLink } from 'react-router-dom';
 
 import bookss from '../Images/reading-notes-at-work.jpg'
 import reading from '../Images/reading.jpg'
@@ -76,8 +77,8 @@ const AboutUs = () => {
          <Box padding="3%">
          <Stack spacing={4}>
        <Text fontSize='xl' > Koja ponuda mu najviše odgovara, može da je potvrdi i ugovori razmjenu/prodaju.</Text>
-       <Text fontSize='xl' fontWeight='bold'> Za korišćenje Bookuj.me usluga možete se registrovati <Link textColor='blue'>ovdje</Link></Text>
-       <Text fontSize='xl' fontWeight='bold'> Ako imate bilo kakvih pitanja ili nedoumica kontaktirajte nas!-<Link textColor='blue'>Kontakt</Link></Text>
+       <Text fontSize='xl' fontWeight='bold'> Za korišćenje Bookuj.me usluga možete se registrovati <Link as={ReactLink} to='/Registracija' textColor='blue'>ovdje</Link></Text>
+       <Text fontSize='xl' fontWeight='bold'> Ako imate bilo kakvih pitanja ili nedoumica kontaktirajte nas!-<Link as={ReactLink} to='/Kontakt' textColor='blue'>Kontakt</Link></Text>
         </Stack>
         </Box>
          <Box> 
