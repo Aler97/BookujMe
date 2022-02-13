@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Home from './components/Home';
-import AboutUs from './components/AboutUs';
-import Contact from './components/Contact';
-import Oglasi from './components/Oglasi';
-import Oglas from './components/Oglas';
-import Profil from './components/Profil';
-import Reg from './components/Registration.js'
-import Login from './components/Login'
-import ProtectedRoute from './components/ProtectedRoute';
-import NotFound from './components/NotFound';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
+import Home from './Components/Home';
+import AboutUs from './Components/AboutUs';
+import Contact from './Components/Contact';
+import Oglasi from './Components/Oglasi';
+import Oglas from './Components/Oglas';
+import Profil from './Components/Profil';
+import Reg from './Components/Registration.js'
+import Login from './Components/Login'
+import ProtectedRoute from './Components/ProtectedRoute';
+import NotFound from './Components/NotFound';
 import { AuthContext } from './helpers/AuthContext';
 
 
