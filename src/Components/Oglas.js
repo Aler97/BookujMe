@@ -27,7 +27,9 @@ const Oglas = () => {
          <Text>Something</Text>
          <Text>Something</Text>
          <Text>Something</Text>
-         <Button >Opsirnije</Button>
+         <Button bgColor= '#292E33'
+            color= 'white'
+            fontWeight= 'bold'>Opsirnije</Button>
          </Stack></Center>
          
          </SimpleGrid></> );

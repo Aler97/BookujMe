@@ -61,7 +61,9 @@ const Home = () => {
         <Oglas/>
         <Oglas/>
         </SimpleGrid>
-        <Center><Button mb='5%' width="20%">Svi oglasi</Button></Center>
+        <Center><Button mb='5%' width="20%" bgColor= '#292E33'
+            color= 'white'
+            fontWeight= 'bold'>Svi oglasi</Button></Center>
         
          </>);
 }
