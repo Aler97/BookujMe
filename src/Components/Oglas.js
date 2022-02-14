@@ -1,38 +1,39 @@
 import React from 'react';
 
 import books from '../Images/Books-High-Quality-PNG.png'
-import {Box,
+import {
+    Box,
     Text,
     Center,
-    Img ,
+    Img,
     Stack,
     SimpleGrid,
     Link,
     Button
-    
-    } from '@chakra-ui/react';
+
+} from '@chakra-ui/react';
 
 
 const Oglas = () => {
-    return ( <><SimpleGrid
-        columns={{ sm: 2, md: 1}}
-         w='100%'
-        h='auto' 
-       border='solid'
-       borderColor='black'
-       borderRadius='0.5em'
-     ><Img src={books} alt='books'></Img>
-     <Center><Stack spacing={4}  mb='15px'>
-         <Text>Something</Text>
-         <Text>Something</Text>
-         <Text>Something</Text>
-         <Text>Something</Text>
-         <Button bgColor= '#292E33'
-            color= 'white'
-            fontWeight= 'bold'>Opsirnije</Button>
-         </Stack></Center>
-         
-         </SimpleGrid></> );
+    return (<><SimpleGrid
+        columns={{ sm: 2, md: 1 }}
+        w='100%'
+        h='auto'
+        border='solid'
+        borderColor='black'
+        borderRadius='0.5em'
+    ><Img src={books} alt='books'></Img>
+        <Center><Stack spacing={4} mb='15px'>
+            <Text>Something</Text>
+            <Text>Something</Text>
+            <Text>Something</Text>
+            <Text>Something</Text>
+            <Button bgColor='#292E33'
+                color='white'
+                fontWeight='bold'>Opsirnije</Button>
+        </Stack></Center>
+
+    </SimpleGrid></>);
 }
- 
+
 export default Oglas;
