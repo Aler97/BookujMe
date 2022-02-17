@@ -19,12 +19,12 @@ import { AuthContext } from './helpers/AuthContext';
 
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   return (
 
-   
-    
+
+
 
     <Router>
       <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>

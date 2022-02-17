@@ -1,70 +1,113 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import {
-    Box,
     Text,
     Center,
-    Img,
     Stack,
     SimpleGrid,
     Link,
-    Button
+    Button,
+    useMediaQuery,
+    Flex
 
 } from '@chakra-ui/react';
 import { Link as ReactLink } from 'react-router-dom';
 import Triangle from '../Images/triangleimage.png';
 import Oglas from './Oglas';
+import { AuthContext } from '../helpers/AuthContext';
 
 const Home = () => {
-    return (<><SimpleGrid
-        columns={{ sm: 2, md: 2 }}
-        w='100%'
-        h='auto'
-        bg='#89D0CA'
-    >
-        <Box p='10%'>
-            <Center>
+    const { isLoggedIn } = useContext(AuthContext);
+
+    const [isLargerThan1000] = useMediaQuery('(min-width: 1000px)');
+
+
+    return (<>
+
+        {isLargerThan1000 ? <SimpleGrid
+            w='100%'
+            bg='brand.normal'
+            bgImage={Triangle}
+            bgPosition='right'
+            bgRepeat='no-repeat'
+            bgSize='contain'
+            padding='100px'
+
+        >
+
+            <Center p='0 0 0 100px' w='50%' >
                 <Stack spacing={6}>
                     <Text fontSize={['xl', '3xl']} fontWeight={['semibold', 'semibold']}> Razmjena Knjiga</Text>
-                    <Text fontSize={['5xl', '8xl']} fontWeight={['bold', 'bold']} as='c'> Bookuj.me</Text>
-                    <Text fontSize={['m', 'l']} as='c' fontWeight={['bold', 'bold']}> Vebsajt Bookuj.me nastao je sa idejom da kroz jednostavan interfejs omogući korisnicima razmjenu/trgovinu polovnih veoma očuvanih knjiga.ebsajt Bookuj.me nastao je sa idejom da kroz jednostava.ebsajt Bookuj.me nastao je sa idejom da kroz jednostava.ebsajt Bookuj.me nastao je sa idejom da kroz jednebsajt Bookuj.me nastao je sa idejom da kroz jedn...ebsajt Bookuj.me nastao je sa idejom da kroz jednebsajt Bookujda kroz jedn...</Text>
-                    <Button width='40%' bgColor='#292E33'
+                    <Text fontSize={['5xl', '8xl']} fontWeight={['bold', 'bold']} > Bookuj.me</Text>
+                    <Text fontSize={['m', 'l']} fontWeight={['bold', 'bold']}> Vebsajt Bookuj.me nastao je sa idejom da kroz jednostavan interfejs omogući korisnicima razmjenu/trgovinu polovnih veoma očuvanih knjiga.ebsajt Bookuj.me nastao je sa idejom da kroz jednostava.ebsajt Bookuj.me nastao je sa idejom da kroz jednostavaebsajt Bookuj.me nastao je sa idejom da kroz jednebsajt Bookuj.me nastao je sa idejom da kroz jedn...ebsajt Bookuj.me nastao je sa idejom da kroz jednebsajt Bookujda kroz jedn...</Text>
+                    {!isLoggedIn ? <Link as={ReactLink} to='/Registracija'><Button width='40%' bgColor='button.normal'
                         color='white'
                         fontWeight='bold'
-                    >Registruj se</Button>
+                        _hover={{ bgColor: 'black', color: 'white' }} _active={{ bgColor: 'black', color: 'white' }}
+                    >Registruj se</Button></Link> : <Link as={ReactLink} to='/'><Button width='40%' bgColor='button.normal'
+                        color='white'
+                        fontWeight='bold'
+                        _hover={{ bgColor: 'black', color: 'white' }} _active={{ bgColor: 'black', color: 'white' }}
+                    >Postavi Oglas</Button></Link>}
                 </Stack>
 
             </Center>
-        </Box>
-        <Box h='100%'>
-            <Img src={Triangle} alt='books' h='100%' w='100%' />
-        </Box>
-
-    </SimpleGrid>
-
-        <Box >
-            <Stack spacing={4}>
 
 
 
-            </Stack>
-        </Box>
-        <SimpleGrid
-            columns={{ sm: 2, md: 3 }}
+        </SimpleGrid> : <Flex
             w='100%'
-            h='auto'
-            p='10%'
-            mt='2%'
-            spacing='5%'
+            bg='brand.normal'
+            justifyContent='center'
+            alignItems='center'
+            padding='30px'
+
 
         >
-            <Oglas />
-            <Oglas />
-            <Oglas />
-        </SimpleGrid>
-        <Center><Button mb='5%' width="20%" bgColor='#292E33'
-            color='white'
-            fontWeight='bold'>Svi oglasi</Button></Center>
+
+            <Center w='90%' padding='10px'>
+                <Stack spacing={6}>
+                    <Text fontSize={['xl', '2xl', '3xl']} fontWeight={['semibold', 'semibold']}> Razmjena Knjiga</Text>
+                    <Text fontSize={['5xl', '7xl', '8xl']} fontWeight={['bold', 'bold']} > Bookuj.me</Text>
+                    <Text fontSize={['m', 'm', 'l']} fontWeight={['bold', 'bold']}>  Bookuj.me nastao je sa idejom da kroz jednostava.ebsajt Bookuj.me nastao je sa idejom da kroz jednostavaebsajt Bookuj.me nastao je sa idejom da kroz jednebsajt Bookuj.me nastao je sa idejom da kroz jedn...ebsajt Bookuj.me nastao je sa idejom da kroz jednebsajt Bookujda kroz jedn...</Text>
+                    {!isLoggedIn ? <Link as={ReactLink} to='/Registracija'><Button bgColor='button.normal'
+                        color='white'
+                        fontWeight='bold'
+                        _hover={{ bgColor: 'black', color: 'white' }} _active={{ bgColor: 'black', color: 'white' }}
+                    >Registruj se</Button></Link> : <Link as={ReactLink} to='/'><Button bgColor='button.normal'
+                        color='white'
+                        fontWeight='bold'
+                        _hover={{ bgColor: 'black', color: 'white' }} _active={{ bgColor: 'black', color: 'white' }}
+                    >Postavi Oglas</Button></Link>}
+                </Stack>
+
+            </Center>
+
+
+
+        </Flex>}
+
+        <Flex flexDirection='column' gap={['100px', '100px', '0px']}>
+            <SimpleGrid
+                columns={{ sm: 1, md: 2, lg: 3 }}
+                w='100%'
+                h='auto'
+                p='10%'
+                mt='2%'
+                spacing='5%'
+
+            >
+                <Oglas />
+                <Oglas />
+                <Oglas />
+            </SimpleGrid>
+            <Center><Button mb='5%' width={['40%', "20%"]} bgColor='button.normal'
+                color='white'
+                fontWeight='bold'
+                _hover={{ bgColor: 'black', color: 'white' }} _active={{ bgColor: 'black', color: 'white' }}>Svi oglasi</Button>
+            </Center>
+        </Flex>
+
 
     </>);
 }

@@ -16,7 +16,7 @@ import {
 
 const Oglas = () => {
     return (<><SimpleGrid
-        columns={{ sm: 2, md: 1 }}
+        columns={{ sm: 1, md: 1 }}
         w='100%'
         h='auto'
         border='solid'
@@ -28,9 +28,10 @@ const Oglas = () => {
             <Text>Something</Text>
             <Text>Something</Text>
             <Text>Something</Text>
-            <Button bgColor='#292E33'
+            <Button bgColor='button.normal'
                 color='white'
-                fontWeight='bold'>Opsirnije</Button>
+                fontWeight='bold'
+                _hover={{ bgColor: 'black', color: 'white' }} _active={{ bgColor: 'black', color: 'white' }}>Opsirnije</Button>
         </Stack></Center>
 
     </SimpleGrid></>);

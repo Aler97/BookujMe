@@ -3,11 +3,15 @@ import { extendTheme } from '@chakra-ui/react'
 const theme = extendTheme({
     styles: {
         global: {
-            'html, body': {
+            body: {
                 margin: '0',
                 padding: '0',
-                boxSizing: 'border-box'
+                boxSizing: 'border-box',
+                minHeight: '100%'
             },
+            html: {
+                height: '100%'
+            }
         }
     },
 
