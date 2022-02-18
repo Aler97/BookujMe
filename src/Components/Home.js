@@ -70,13 +70,15 @@ const Home = () => {
                     <Text fontSize={['xl', '2xl', '3xl']} fontWeight={['semibold', 'semibold']}> Razmjena Knjiga</Text>
                     <Text fontSize={['5xl', '7xl', '8xl']} fontWeight={['bold', 'bold']} > Bookuj.me</Text>
                     <Text fontSize={['m', 'm', 'l']} fontWeight={['bold', 'bold']}>  Bookuj.me nastao je sa idejom da kroz jednostava.ebsajt Bookuj.me nastao je sa idejom da kroz jednostavaebsajt Bookuj.me nastao je sa idejom da kroz jednebsajt Bookuj.me nastao je sa idejom da kroz jedn...ebsajt Bookuj.me nastao je sa idejom da kroz jednebsajt Bookujda kroz jedn...</Text>
-                    {!isLoggedIn ? <Link as={ReactLink} to='/Registracija'><Button bgColor='button.normal'
+                    {!isLoggedIn ? <Link as={ReactLink} to='/Registracija' w='50%'><Button bgColor='button.normal'
                         color='white'
                         fontWeight='bold'
+                        w='100%'
                         _hover={{ bgColor: 'black', color: 'white' }} _active={{ bgColor: 'black', color: 'white' }}
-                    >Registruj se</Button></Link> : <Link as={ReactLink} to='/'><Button bgColor='button.normal'
+                    >Registruj se</Button></Link> : <Link as={ReactLink} to='/' w='50%'><Button bgColor='button.normal'
                         color='white'
                         fontWeight='bold'
+                        w='100%'
                         _hover={{ bgColor: 'black', color: 'white' }} _active={{ bgColor: 'black', color: 'white' }}
                     >Postavi Oglas</Button></Link>}
                 </Stack>
