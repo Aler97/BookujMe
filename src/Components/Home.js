@@ -75,7 +75,7 @@ const Home = () => {
                         fontWeight='bold'
                         w='100%'
                         _hover={{ bgColor: 'black', color: 'white' }} _active={{ bgColor: 'black', color: 'white' }}
-                    >Registruj se</Button></Link> : <Link as={ReactLink} to='/' w='50%'><Button bgColor='button.normal'
+                    >Registruj se</Button></Link> : <Link as={ReactLink} to='/PostaviOglas' w='50%'><Button bgColor='button.normal'
                         color='white'
                         fontWeight='bold'
                         w='100%'

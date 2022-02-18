@@ -81,7 +81,7 @@ function Header() {
                                     Postavi Oglas
                                 </MenuItem>
                             </Link>
-                            <MenuItem color='red' fontWeight='semibold'>
+                            <MenuItem color='red' fontWeight='semibold' onClick={() => { setIsLoggedIn(false); navigate('/') }}>
                                 Odjavi Se
                             </MenuItem>
                         </MenuList>
