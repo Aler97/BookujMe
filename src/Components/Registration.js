@@ -9,7 +9,8 @@ import {
   Button,
   InputRightElement,
   FormControl,
-  Text
+  Text,
+  FormHelperText
 } from '@chakra-ui/react';
 import {
   PhoneIcon,
@@ -17,7 +18,8 @@ import {
   EmailIcon
 } from '@chakra-ui/icons'
 import { useForm } from "react-hook-form";
-
+import {Login} from './Login';
+import { Link as ReactLink } from 'react-router-dom';
 
 const Reg = () => {
   const [show, setShow] = React.useState(false)
@@ -33,7 +35,7 @@ const Reg = () => {
     data.preventDefault();
   };
 
-  return (<Center w='100%' h='80vh' ><Center margin='100px auto' w='100%'><Box w={['95%', '80%', '60%', '35%']}
+  return (<Center w='100%' h='80vh' mt='20px'><Center margin='100px auto' w='100%'><Box w={['95%', '80%', '60%', '35%']}
     h='auto'
     bg='brand.normal'
     boxShadow='md'
@@ -122,7 +124,9 @@ const Reg = () => {
           _hover={{ boxShadow: 'md' }}
         >Registruj Se</Button>
       </Stack>
-
+<FormHelperText>
+  Ako vec imate nalog <Link as={ReactLink} to='/Login'>Ulogujte se</Link>
+</FormHelperText>
     </form>
   </Box>
   </Center></Center>);
