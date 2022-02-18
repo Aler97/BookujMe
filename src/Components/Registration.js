@@ -10,7 +10,6 @@ import {
   InputRightElement,
   FormControl,
   Text,
-  FormHelperText,
   Link
 } from '@chakra-ui/react';
 import {
@@ -124,9 +123,9 @@ const Reg = () => {
           _hover={{ boxShadow: 'md' }}
         >Registruj Se</Button>
       </Stack>
-      <FormHelperText>
-        Ako vec imate nalog <Link as={ReactLink} to='/Login'>Ulogujte se</Link>
-      </FormHelperText>
+
+      <Text marginTop='15px' float='right'>Ako već imate nalog <Link as={ReactLink} to='/Prijavljivanje' fontWeight='semibold'>Ulogujte se</Link></Text>
+
     </form>
   </Box>
   </Center></Center>);

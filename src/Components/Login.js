@@ -9,12 +9,14 @@ import {
     Button,
     InputRightElement,
     FormControl,
-    Text
+    Text,
+    Link
 } from '@chakra-ui/react';
 import {
     EmailIcon
 } from '@chakra-ui/icons'
 import { useForm } from "react-hook-form";
+import { Link as ReactLink } from 'react-router-dom';
 
 
 const Login = () => {
@@ -77,7 +79,7 @@ const Login = () => {
 
                 <Button type='submit' boxShadow='sm' _hover={{ boxShadow: 'md' }} >Prijavi Se</Button>
             </Stack>
-
+            <Text marginTop='15px' float='right' fontWeight='thin'>Ako nemate nalog <Link as={ReactLink} to='/Registracija' fontWeight='semibold'>Registrujte se</Link></Text>
         </form>
     </Box>
     </Center>
