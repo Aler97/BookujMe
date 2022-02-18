@@ -31,7 +31,7 @@ const Home = () => {
             bgPosition='right'
             bgRepeat='no-repeat'
             bgSize='contain'
-            padding='100px'
+            padding='200px 100px'
 
         >
 
@@ -40,11 +40,11 @@ const Home = () => {
                     <Text fontSize={['xl', '3xl']} fontWeight={['semibold', 'semibold']}> Razmjena Knjiga</Text>
                     <Text fontSize={['5xl', '8xl']} fontWeight={['bold', 'bold']} > Bookuj.me</Text>
                     <Text fontSize={['m', 'l']} fontWeight={['bold', 'bold']}> Vebsajt Bookuj.me nastao je sa idejom da kroz jednostavan interfejs omogući korisnicima razmjenu/trgovinu polovnih veoma očuvanih knjiga.ebsajt Bookuj.me nastao je sa idejom da kroz jednostava.ebsajt Bookuj.me nastao je sa idejom da kroz jednostavaebsajt Bookuj.me nastao je sa idejom da kroz jednebsajt Bookuj.me nastao je sa idejom da kroz jedn...ebsajt Bookuj.me nastao je sa idejom da kroz jednebsajt Bookujda kroz jedn...</Text>
-                    {!isLoggedIn ? <Link as={ReactLink} to='/Registracija'><Button width='40%' bgColor='button.normal'
+                    {!isLoggedIn ? <Link as={ReactLink} to='/Registracija' w='40%'><Button width='100%' bgColor='button.normal'
                         color='white'
                         fontWeight='bold'
                         _hover={{ bgColor: 'black', color: 'white' }} _active={{ bgColor: 'black', color: 'white' }}
-                    >Registruj se</Button></Link> : <Link as={ReactLink} to='/'><Button width='40%' bgColor='button.normal'
+                    >Registruj se</Button></Link> : <Link as={ReactLink} to='/PostaviOglas' w='40%'><Button width='100%' bgColor='button.normal'
                         color='white'
                         fontWeight='bold'
                         _hover={{ bgColor: 'black', color: 'white' }} _active={{ bgColor: 'black', color: 'white' }}
@@ -93,7 +93,6 @@ const Home = () => {
                 w='100%'
                 h='auto'
                 p='10%'
-                mt='2%'
                 spacing='5%'
 
             >
@@ -101,10 +100,10 @@ const Home = () => {
                 <Oglas />
                 <Oglas />
             </SimpleGrid>
-            <Center><Button mb='5%' width={['40%', "20%"]} bgColor='button.normal'
+            <Center><Link as={ReactLink} to='/Oglasi' width={['40%', "20%"]} display='flex' justifyContent='center' alignItems='center' _hover={{ textDecoration: 'none' }}><Button mb='5%' bgColor='button.normal'
                 color='white'
                 fontWeight='bold'
-                _hover={{ bgColor: 'black', color: 'white' }} _active={{ bgColor: 'black', color: 'white' }}>Svi oglasi</Button>
+                _hover={{ bgColor: 'black', color: 'white' }} _active={{ bgColor: 'black', color: 'white' }}>Svi oglasi</Button></Link>
             </Center>
         </Flex>
 

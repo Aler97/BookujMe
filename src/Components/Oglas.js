@@ -1,15 +1,14 @@
 import React from 'react';
-
+import { Link as ReactLink } from 'react-router-dom'
 import books from '../Images/Books-High-Quality-PNG.png'
 import {
-    Box,
     Text,
     Center,
     Img,
     Stack,
     SimpleGrid,
-    Link,
-    Button
+    Button,
+    Link
 
 } from '@chakra-ui/react';
 
@@ -28,10 +27,11 @@ const Oglas = () => {
             <Text>Something</Text>
             <Text>Something</Text>
             <Text>Something</Text>
-            <Button bgColor='button.normal'
+            <Link as={ReactLink} to='/Oglasi/:id'><Button bgColor='button.normal'
                 color='white'
                 fontWeight='bold'
-                _hover={{ bgColor: 'black', color: 'white' }} _active={{ bgColor: 'black', color: 'white' }}>Opsirnije</Button>
+                _hover={{ bgColor: 'black', color: 'white' }} _active={{ bgColor: 'black', color: 'white' }}>Opširnije</Button></Link>
+
         </Stack></Center>
 
     </SimpleGrid></>);
