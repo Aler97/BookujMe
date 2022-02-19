@@ -31,7 +31,7 @@ const Login = () => {
         data.preventDefault();
     };
 
-    return (<Center w='100%' h='80vh' ><Center margin='100px auto' w='100%'><Box w={['95%', '80%', '60%', '35%']}
+    return (<Center w='100%' h='400px' mb='500px'><Center w='100%'><Box w={['95%', '80%', '60%', '35%']}
         h='auto'
         bg='#89D0CA'
         boxShadow='md'

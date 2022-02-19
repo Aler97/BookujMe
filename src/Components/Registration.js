@@ -34,12 +34,13 @@ const Reg = () => {
     data.preventDefault();
   };
 
-  return (<Center w='100%' h='80vh' mt='20px'><Center margin='100px auto' w='100%'><Box w={['95%', '80%', '60%', '35%']}
+  return (<Center w='100%' h='800px' mb='200px'><Center w='100%'><Box w={['95%', '80%', '70%', '50%', '35%']}
     h='auto'
     bg='brand.normal'
     boxShadow='md'
     rounded='lg'
     padding='5%'
+
   >
     <Text fontSize='3xl' align='center'>Bookuj.me</Text>
     <br />
