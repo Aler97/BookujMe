@@ -16,7 +16,7 @@ import NotFound from './Components/NotFound';
 import { AuthContext } from './helpers/AuthContext';
 import PostaviOglas from './Components/PostaviOglas';
 import SinglePost from './Components/SinglePost';
-
+import ScrollToTop from './helpers/ScrollToTop'
 
 
 function App() {
@@ -27,20 +27,22 @@ function App() {
     <Router>
       <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
         <Header />
-        <Routes>
-          <Route path='/' element={<Home />}></Route>
-          <Route path='/ONama' element={<AboutUs />}></Route>
-          <Route path='/Kontakt' element={<Contact />}></Route>
-          <Route path='/Prijavljivanje' element={<Login />}></Route>
-          <Route path='/Registracija' element={<Reg />}></Route>
-          <Route path='/Oglasi' element={<Oglasi />}></Route>
-          <Route element={<ProtectedRoute />}>
-            <Route path='/Profil' element={<Profil />} />
-            <Route path='/Oglasi/:id' element={<SinglePost />}></Route>
-            <Route path='/PostaviOglas' element={<PostaviOglas />} />
-          </Route>
-          <Route path='*' element={<NotFound />}></Route>
-        </Routes>
+        <ScrollToTop>
+          <Routes>
+            <Route path='/' element={<Home />}></Route>
+            <Route path='/ONama' element={<AboutUs />}></Route>
+            <Route path='/Kontakt' element={<Contact />}></Route>
+            <Route path='/Prijavljivanje' element={<Login />}></Route>
+            <Route path='/Registracija' element={<Reg />}></Route>
+            <Route path='/Oglasi' element={<Oglasi />}></Route>
+            <Route element={<ProtectedRoute />}>
+              <Route path='/Profil' element={<Profil />} />
+              <Route path='/Oglasi/:id' element={<SinglePost />}></Route>
+              <Route path='/PostaviOglas' element={<PostaviOglas />} />
+            </Route>
+            <Route path='*' element={<NotFound />}></Route>
+          </Routes>
+        </ScrollToTop>
       </AuthContext.Provider>
       <Footer />
     </Router>
