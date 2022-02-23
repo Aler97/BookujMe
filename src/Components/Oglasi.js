@@ -2,7 +2,7 @@ import { Box, Button, Flex, Grid, Input, Modal, ModalBody, ModalCloseButton, Mod
 import Oglas from "./Oglas";
 
 function Oglasi() {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen, onOpen, onClose } = useDisclosure();
 
     return (<Box w='100$' minH='70vh'>
         <Flex w='100%' padding={['30px 10px 30px 10px', '30px', '50px']} gap={['7px', '10px', '20px']} justifyContent='center' alignItems='center' flexDirection={['column', 'column', 'row']}>

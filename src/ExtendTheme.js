@@ -10,7 +10,8 @@ const theme = extendTheme({
                 minHeight: '100%'
             },
             html: {
-                height: '100%'
+                height: '100%',
+                scrollBehavior: 'smooth'
             }
         }
     },

@@ -3,7 +3,7 @@ import {
     Box, Image, Flex, Link, Spacer, Button, useMediaQuery, IconButton, Drawer, DrawerBody, DrawerContent, DrawerCloseButton, useDisclosure, Menu, MenuButton, MenuList, MenuItem
 } from '@chakra-ui/react';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { Link as ReactLink, useNavigate } from 'react-router-dom';
+import { NavLink as ReactLink, useNavigate } from 'react-router-dom';
 import Logo from '../assets/logo.png';
 import Profile from '../assets/profile.png';
 import SmallLogo from '../assets/smallLogo.png';
@@ -19,14 +19,14 @@ function Header() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef();
 
-    return (<Box w='100%' h={['70px', '80px', '90px', '100px']} display='flex' flexDir='row' justifyContent={'space-between'} alignItems='center' px={['20px', '40px']} borderBottom='1px solid black'>
+    return (<Box w='100%' h={['70px', '80px', '90px', '100px']} display='flex' flexDir='row' justifyContent={'space-between'} alignItems='center' px={['20px', '40px']} borderBottom='1px solid black' >
         {isLargerThan450 ? <Link as={ReactLink} to='/'><Image src={Logo} w={{ base: '110px', sm: '130px', md: '140px', lg: '200px' }} h={["50px", '60px', '70px']}></Image></Link> : <Link as={ReactLink} to='/'><Image src={SmallLogo} w='40px' h='40px'></Image></Link>}
         {isLargerThan850 ? <Flex w={{ md: '60%', xl: '45%' }} justifyContent='space-evenly' alignItems='center'>
-            <Link fontSize={[20]} _hover={{ textDecoration: 'none', borderBottom: '1px solid black' }} as={ReactLink} to='/'>Početna</Link>
+            <Link fontSize={[20]} _hover={{ textDecoration: 'none', borderBottom: '1px solid black' }} as={ReactLink} to='/' _activeLink={{ fontWeight: 'extrabold' }}>Početna</Link>
             <Spacer />
-            <Link fontSize={[20]} _hover={{ textDecoration: 'none', borderBottom: '1px solid black' }} as={ReactLink} to='/ONama'>O Nama</Link>
+            <Link fontSize={[20]} _hover={{ textDecoration: 'none', borderBottom: '1px solid black' }} as={ReactLink} to='/ONama' _activeLink={{ fontWeight: 'extrabold' }}>O Nama</Link>
             <Spacer />
-            <Link fontSize={[20]} _hover={{ textDecoration: 'none', borderBottom: '1px solid black' }} as={ReactLink} to='/Kontakt'>Kontakt</Link>
+            <Link fontSize={[20]} _hover={{ textDecoration: 'none', borderBottom: '1px solid black' }} as={ReactLink} to='/Kontakt' _activeLink={{ fontWeight: 'extrabold' }}>Kontakt</Link>
             <Spacer />
             {!isLoggedIn ? <Link as={ReactLink} to='/Prijavljivanje'><Button border='1px solid black' fontWeight='light' bgColor='transparent' borderRadius='0' fontSize={20} py='6' _hover={{ boxShadow: '0 0 10px black' }} _active={{ transform: 'scale(0.95)' }} >Prijavi Se</Button></Link>
                 :

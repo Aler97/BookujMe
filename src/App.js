@@ -17,6 +17,8 @@ import { AuthContext } from './helpers/AuthContext';
 import PostaviOglas from './Components/PostaviOglas';
 import SinglePost from './Components/SinglePost';
 import ScrollToTop from './helpers/ScrollToTop'
+import TvojiOglasi from './Components/TvojiOglasi';
+import TvojePonude from './Components/TvojePonude';
 
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
             <Route path='/Oglasi' element={<Oglasi />}></Route>
             <Route element={<ProtectedRoute />}>
               <Route path='/Profil' element={<Profil />} />
+              <Route path='/TvojiOglasi' element={<TvojiOglasi />} />
+              <Route path='/TvojePonude' element={<TvojePonude />} />
               <Route path='/Oglasi/:id' element={<SinglePost />}></Route>
               <Route path='/PostaviOglas' element={<PostaviOglas />} />
             </Route>
