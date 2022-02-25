@@ -1,4 +1,4 @@
-import { Link, HStack, Flex } from '@chakra-ui/react';
+import { Link, Flex } from '@chakra-ui/react';
 import { NavLink } from 'react-router-dom';
 import { RiAccountBoxLine } from 'react-icons/ri';
 import { GiBookshelf } from 'react-icons/gi';

@@ -46,7 +46,7 @@ function Header() {
                                 Profil
                             </MenuItem>
                         </Link>
-                        <Link as={ReactLink} to='/Profil' _hover={{ textDecoration: 'none' }}>
+                        <Link as={ReactLink} to='/PostaviOglas' _hover={{ textDecoration: 'none' }}>
                             <MenuItem>
                                 Postavi Oglas
                             </MenuItem>
@@ -76,7 +76,7 @@ function Header() {
                                     Profil
                                 </MenuItem>
                             </Link>
-                            <Link as={ReactLink} to='/Profil' _hover={{ textDecoration: 'none' }}>
+                            <Link as={ReactLink} to='/PostaviOglas' _hover={{ textDecoration: 'none' }}>
                                 <MenuItem>
                                     Postavi Oglas
                                 </MenuItem>
