@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {
   Box,
   Input,
@@ -19,19 +19,46 @@ import {
 } from '@chakra-ui/icons'
 import { useForm } from "react-hook-form";
 import { Link as ReactLink } from 'react-router-dom';
+import Axios from 'axios';
 
 const Reg = () => {
   const [show, setShow] = React.useState(false)
   const handleClick = () => setShow(!show)
 
-  const SubmitHandler = (e) => {
-    e.preventDefault();
-  }
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const [isSubmit,setIsSubmit]=useState(false);
+ 
+ 
+  const url="https://api.bookuj.ml/users/"
+  const [data,setData]=useState({
+    first_name:"",
+    last_name:"",
+    email:"",
+    city:"",
+    password:""
 
-  const onSubmit = (data) => {
-    console.log(data);
-    data.preventDefault();
+  })
+  function handle(e){
+    const newdata={...data}
+    newdata[e.target.id]=e.target.value
+    setData(newdata)
+    console.log(newdata)
+
+  }
+
+  function onSubmit(e) {
+    e.preventDefault();
+    Axios.post(url,{
+      first_name:data.first_name,
+      last_name:data.last_name,
+      email:data.email,
+      city:data.city,
+      password:data.password
+    })
+    .then(res=>{
+      console.log(res.data)
+      setIsSubmit(true);
+    })
   };
 
   return (<Center w='100%' h='800px' mb='200px'><Center w='100%'><Box w={['95%', '80%', '70%', '50%', '35%']}
@@ -44,8 +71,9 @@ const Reg = () => {
   >
     <Text fontSize='3xl' align='center'>Bookuj.me</Text>
     <br />
-
-    <form action="submit" h='auto' onSubmit={handleSubmit(onSubmit)}>
+{isSubmit? (<><Text fontSize='2xl'>Uspjesno ste Registrovani!!! </Text><Text>Ulogujte se <Link  as={ReactLink} to='/Prijavljivanje' fontWeight='semibold'>ovdje</Link></Text></>
+):(
+    <form action="submit" h='auto' onSubmit={(e)=>onSubmit(e)}>
       <Stack spacing={3}>
         <FormControl isRequired>
           <InputGroup>
@@ -54,7 +82,10 @@ const Reg = () => {
               placeholder='Ime'
               area-lable='Ime'
               backgroundColor='white'
-              {...register("Firstname")} />
+              {...register("Firstname")}
+              onChange={(e)=>handle(e)}
+              id="first_name" 
+              value={data.first_name}/>
 
           </InputGroup>
         </FormControl>
@@ -65,7 +96,10 @@ const Reg = () => {
               placeholder='Prezime'
               area-lable='Prezime'
               backgroundColor='white'
-              {...register("Lastname")} />
+              {...register("Lastname")}
+              onChange={(e)=>handle(e)}
+              id="last_name" 
+              value={data.last_name} />
           </InputGroup>
         </FormControl>
         <FormControl isRequired>
@@ -74,7 +108,10 @@ const Reg = () => {
             <Input type='text'
               placeholder='Grad'
               backgroundColor='white'
-              {...register("City")} />
+              {...register("City")} 
+              onChange={(e)=>handle(e)}
+              id="city" 
+              value={data.city}/>
           </InputGroup>
         </FormControl>
         <FormControl isRequired>
@@ -83,18 +120,13 @@ const Reg = () => {
             <Input type='email'
               placeholder='email'
               backgroundColor='white'
-              {...register("Email")} />
+              {...register("Email")}
+              onChange={(e)=>handle(e)}
+              id="email" 
+              value={data.email} />
           </InputGroup>
         </FormControl>
-        <FormControl isRequired>
-          <InputGroup>
-            <InputLeftElement children={<PhoneIcon />} />
-            <Input type='number'
-              placeholder='Broj telefona'
-              backgroundColor='white'
-              {...register("Phone")} />
-          </InputGroup>
-        </FormControl>
+      
         <FormControl >
 
           <InputGroup>
@@ -106,8 +138,11 @@ const Reg = () => {
               backgroundColor='white'
               {...register("password", {
                 required: "Please enter Password!",
-                minLength: { value: 8, message: "Too Short! It needs to be at least 8 characters long!" }
+                minLength: { value: 8, message: "Prekratko! Mora da ima bar 8 karaktera!" }
               })}
+              onChange={(e)=>handle(e)}
+              id="password" 
+              value={data.password}
             />
 
             <InputRightElement width='4.5rem'>
@@ -127,7 +162,7 @@ const Reg = () => {
 
       <Text marginTop='15px' float='right'>Ako već imate nalog <Link as={ReactLink} to='/Prijavljivanje' fontWeight='semibold'>Ulogujte se</Link></Text>
 
-    </form>
+    </form>)}
   </Box>
   </Center></Center>);
 }
