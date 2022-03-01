@@ -1,9 +1,8 @@
 import axios from "axios";
-import {auth} from "../auth/AuthService"
-const apiUrl="https://api.bookuj.ml";
+const apiUrl = "https://api.bookuj.ml";
 
-const instance=axios.create({
-    baseURL:apiUrl
+const instance = axios.create({
+    baseURL: apiUrl
 })
 
 

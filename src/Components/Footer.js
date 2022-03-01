@@ -17,7 +17,7 @@ function Footer() {
                 </Flex>
                 <Flex fontSize={['12px', '15px', '20px']} gap={['5px', '10px', '10px', '30px']} direction='column'>
                     <Link as={ReactLink} to='/Oglasi' >Svi Oglasi</Link>
-                    <Link as={ReactLink} to='/Profil'>Tvoj Profil</Link>
+                    <Link as={ReactLink} to='/Profil/:id'>Tvoj Profil</Link>
                     <Link as={ReactLink} to='/Registracija' >Registruj Se</Link>
                 </Flex>
             </Flex>

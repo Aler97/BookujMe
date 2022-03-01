@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Input,
@@ -13,7 +13,6 @@ import {
   Link
 } from '@chakra-ui/react';
 import {
-  PhoneIcon,
   InfoIcon,
   EmailIcon
 } from '@chakra-ui/icons'
@@ -25,40 +24,38 @@ const Reg = () => {
   const [show, setShow] = React.useState(false)
   const handleClick = () => setShow(!show)
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const [isSubmit,setIsSubmit]=useState(false);
- 
- 
-  const url="https://api.bookuj.ml/users/"
-  const [data,setData]=useState({
-    first_name:"",
-    last_name:"",
-    email:"",
-    city:"",
-    password:""
+  const { register, formState: { errors } } = useForm();
+  const [isSubmit, setIsSubmit] = useState(false);
+
+
+  const url = "https://api.bookuj.ml/users/"
+  const [data, setData] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    city: "",
+    password: ""
 
   })
-  function handle(e){
-    const newdata={...data}
-    newdata[e.target.id]=e.target.value
+  function handle(e) {
+    const newdata = { ...data }
+    newdata[e.target.id] = e.target.value
     setData(newdata)
-    console.log(newdata)
 
   }
 
   function onSubmit(e) {
     e.preventDefault();
-    Axios.post(url,{
-      first_name:data.first_name,
-      last_name:data.last_name,
-      email:data.email,
-      city:data.city,
-      password:data.password
+    Axios.post(url, {
+      first_name: data.first_name,
+      last_name: data.last_name,
+      email: data.email,
+      city: data.city,
+      password: data.password
     })
-    .then(res=>{
-      console.log(res.data)
-      setIsSubmit(true);
-    })
+      .then(res => {
+        setIsSubmit(true);
+      })
   };
 
   return (<Center w='100%' h='800px' mb='200px'><Center w='100%'><Box w={['95%', '80%', '70%', '50%', '35%']}
@@ -71,98 +68,98 @@ const Reg = () => {
   >
     <Text fontSize='3xl' align='center'>Bookuj.me</Text>
     <br />
-{isSubmit? (<><Text fontSize='2xl'>Uspjesno ste Registrovani!!! </Text><Text>Ulogujte se <Link  as={ReactLink} to='/Prijavljivanje' fontWeight='semibold'>ovdje</Link></Text></>
-):(
-    <form action="submit" h='auto' onSubmit={(e)=>onSubmit(e)}>
-      <Stack spacing={3}>
-        <FormControl isRequired>
-          <InputGroup>
-            <InputLeftElement children={<InfoIcon />} />
-            <Input type='name'
-              placeholder='Ime'
-              area-lable='Ime'
-              backgroundColor='white'
-              {...register("Firstname")}
-              onChange={(e)=>handle(e)}
-              id="first_name" 
-              value={data.first_name}/>
+    {isSubmit ? (<><Text fontSize='2xl'>Uspjesno ste Registrovani!!! </Text><Text>Ulogujte se <Link as={ReactLink} to='/Prijavljivanje' fontWeight='semibold'>ovdje</Link></Text></>
+    ) : (
+      <form action="submit" h='auto' onSubmit={(e) => onSubmit(e)}>
+        <Stack spacing={3}>
+          <FormControl isRequired>
+            <InputGroup>
+              <InputLeftElement children={<InfoIcon />} />
+              <Input type='name'
+                placeholder='Ime'
+                area-lable='Ime'
+                backgroundColor='white'
+                {...register("Firstname")}
+                onChange={(e) => handle(e)}
+                id="first_name"
+                value={data.first_name} />
 
-          </InputGroup>
-        </FormControl>
-        <FormControl isRequired>
-          <InputGroup>
-            <InputLeftElement children={<InfoIcon />} />
-            <Input type='name'
-              placeholder='Prezime'
-              area-lable='Prezime'
-              backgroundColor='white'
-              {...register("Lastname")}
-              onChange={(e)=>handle(e)}
-              id="last_name" 
-              value={data.last_name} />
-          </InputGroup>
-        </FormControl>
-        <FormControl isRequired>
-          <InputGroup>
-            <InputLeftElement children={<InfoIcon />} />
-            <Input type='text'
-              placeholder='Grad'
-              backgroundColor='white'
-              {...register("City")} 
-              onChange={(e)=>handle(e)}
-              id="city" 
-              value={data.city}/>
-          </InputGroup>
-        </FormControl>
-        <FormControl isRequired>
-          <InputGroup>
-            <InputLeftElement children={<EmailIcon />} />
-            <Input type='email'
-              placeholder='email'
-              backgroundColor='white'
-              {...register("Email")}
-              onChange={(e)=>handle(e)}
-              id="email" 
-              value={data.email} />
-          </InputGroup>
-        </FormControl>
-      
-        <FormControl >
+            </InputGroup>
+          </FormControl>
+          <FormControl isRequired>
+            <InputGroup>
+              <InputLeftElement children={<InfoIcon />} />
+              <Input type='name'
+                placeholder='Prezime'
+                area-lable='Prezime'
+                backgroundColor='white'
+                {...register("Lastname")}
+                onChange={(e) => handle(e)}
+                id="last_name"
+                value={data.last_name} />
+            </InputGroup>
+          </FormControl>
+          <FormControl isRequired>
+            <InputGroup>
+              <InputLeftElement children={<InfoIcon />} />
+              <Input type='text'
+                placeholder='Grad'
+                backgroundColor='white'
+                {...register("City")}
+                onChange={(e) => handle(e)}
+                id="city"
+                value={data.city} />
+            </InputGroup>
+          </FormControl>
+          <FormControl isRequired>
+            <InputGroup>
+              <InputLeftElement children={<EmailIcon />} />
+              <Input type='email'
+                placeholder='email'
+                backgroundColor='white'
+                {...register("Email")}
+                onChange={(e) => handle(e)}
+                id="email"
+                value={data.email} />
+            </InputGroup>
+          </FormControl>
 
-          <InputGroup>
+          <FormControl >
 
-            <Input
-              pr='4.5rem'
-              type={show ? 'text' : 'password'}
-              placeholder='Unesi Lozinku'
-              backgroundColor='white'
-              {...register("password", {
-                required: "Please enter Password!",
-                minLength: { value: 8, message: "Prekratko! Mora da ima bar 8 karaktera!" }
-              })}
-              onChange={(e)=>handle(e)}
-              id="password" 
-              value={data.password}
-            />
+            <InputGroup>
 
-            <InputRightElement width='4.5rem'>
-              <Button h='1.75rem' size='sm' onClick={handleClick}>
-                {show ? 'Sakrij' : 'Prikaži'}
-              </Button>
-            </InputRightElement>
+              <Input
+                pr='4.5rem'
+                type={show ? 'text' : 'password'}
+                placeholder='Unesi Lozinku'
+                backgroundColor='white'
+                {...register("password", {
+                  required: "Please enter Password!",
+                  minLength: { value: 8, message: "Prekratko! Mora da ima bar 8 karaktera!" }
+                })}
+                onChange={(e) => handle(e)}
+                id="password"
+                value={data.password}
+              />
 
-          </InputGroup>
-        </FormControl>
-        {errors.password && <p >{errors.password.message}</p>}
-        <Button type='submit'
-          boxShadow='sm'
-          _hover={{ boxShadow: 'md' }}
-        >Registruj Se</Button>
-      </Stack>
+              <InputRightElement width='4.5rem'>
+                <Button h='1.75rem' size='sm' onClick={handleClick}>
+                  {show ? 'Sakrij' : 'Prikaži'}
+                </Button>
+              </InputRightElement>
 
-      <Text marginTop='15px' float='right'>Ako već imate nalog <Link as={ReactLink} to='/Prijavljivanje' fontWeight='semibold'>Ulogujte se</Link></Text>
+            </InputGroup>
+          </FormControl>
+          {errors.password && <p >{errors.password.message}</p>}
+          <Button type='submit'
+            boxShadow='sm'
+            _hover={{ boxShadow: 'md' }}
+          >Registruj Se</Button>
+        </Stack>
 
-    </form>)}
+        <Text marginTop='15px' float='right'>Ako već imate nalog <Link as={ReactLink} to='/Prijavljivanje' fontWeight='semibold'>Ulogujte se</Link></Text>
+
+      </form>)}
   </Box>
   </Center></Center>);
 }

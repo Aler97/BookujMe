@@ -41,7 +41,7 @@ function Header() {
 
                     />
                     <MenuList>
-                        <Link as={ReactLink} to='/Profil' _hover={{ textDecoration: 'none' }}>
+                        <Link as={ReactLink} to='/Profil/:id' _hover={{ textDecoration: 'none' }}>
                             <MenuItem>
                                 Profil
                             </MenuItem>
@@ -71,7 +71,7 @@ function Header() {
 
                         />
                         <MenuList>
-                            <Link as={ReactLink} to='/Profil' _hover={{ textDecoration: 'none' }}>
+                            <Link as={ReactLink} to='/Profil/:id' _hover={{ textDecoration: 'none' }}>
                                 <MenuItem>
                                     Profil
                                 </MenuItem>

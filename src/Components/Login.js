@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Box,
     Input,
@@ -17,22 +17,37 @@ import {
 } from '@chakra-ui/icons'
 import { useForm } from "react-hook-form";
 import { Link as ReactLink } from 'react-router-dom';
+import apiCall from '../service/ApiCall';
 
 
 
 const Login = () => {
+    const [data, setData] = useState({
+        email: "",
+        password: ""
+
+    })
     const [show, setShow] = React.useState(false)
     const handleClick = () => setShow(!show)
 
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, formState: { errors } } = useForm();
 
     function onSubmit(e) {
-        console.log(e);
         e.preventDefault();
-        apiCall("/api/token/",{method:"GET",data:})
-       
+        apiCall("/api/token/", { method: "POST", data: { username: "aleksandar@gmail.com", password: "aleksandar123" } })
+            .then(function (response) {
+                console.log(response)
+            })
+
     };
+
+    function handle(e) {
+        const newdata = { ...data }
+        newdata[e.target.id] = e.target.value
+        setData(newdata)
+
+    }
 
     return (<Center w='100%' h={['400px', '400px', '500px', '600px']} mb='500px'><Center w='100%'><Box w={['95%', '80%', '60%', '35%']}
         h='auto'
@@ -51,8 +66,9 @@ const Login = () => {
                     <InputGroup>
                         <InputLeftElement children={<EmailIcon />} />
                         <Input type='email' placeholder='email' backgroundColor='white'
-                        id="email" 
-                        value={data.email} />
+                            id="email"
+                            value={data.email}
+                            onChange={(e) => handle(e)} />
                     </InputGroup>
                 </FormControl>
 
@@ -71,8 +87,9 @@ const Login = () => {
                             minLength: { value: 8, message: "Too Short! It needs to be at least 8 characters long!" }
 
                         })}
-                    id="password" 
-              value={data.password}/>
+                        id="password"
+                        value={data.password}
+                        onChange={(e) => handle(e)} />
 
                     <InputRightElement width='4.5rem'>
                         <Button h='1.75rem' size='sm' onClick={handleClick}>
