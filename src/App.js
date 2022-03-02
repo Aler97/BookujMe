@@ -1,6 +1,6 @@
 
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
@@ -14,6 +14,7 @@ import Login from './Components/Login'
 import ProtectedRoute from './Components/ProtectedRoute';
 import NotFound from './Components/NotFound';
 import { AuthContext } from './helpers/AuthContext';
+import { UserIdContext } from './helpers/userIdContext';
 import PostaviOglas from './Components/PostaviOglas';
 import SinglePost from './Components/SinglePost';
 import ScrollToTop from './helpers/ScrollToTop'
@@ -21,34 +22,49 @@ import TvojiOglasi from './Components/TvojiOglasi';
 import TvojePonude from './Components/TvojePonude';
 
 
+
+
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState();
+  const [userId, setUserId] = useState('');
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      const token = localStorage.getItem('token');
+      setIsLoggedIn(token);
+      setUserId(localStorage.getItem('id'));
+
+    }
+  }, [])
+
 
   return (
 
     <Router>
-      <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
-        <Header />
-        <ScrollToTop>
-          <Routes>
-            <Route path='/' element={<Home />}></Route>
-            <Route path='/ONama' element={<AboutUs />}></Route>
-            <Route path='/Kontakt' element={<Contact />}></Route>
-            <Route path='/Prijavljivanje' element={<Login />}></Route>
-            <Route path='/Registracija' element={<Reg />}></Route>
-            <Route path='/Oglasi' element={<Oglasi />}></Route>
-            <Route element={<ProtectedRoute />}>
-              <Route path='/Profil/:id' element={<Profil />} />
-              <Route path='/TvojiOglasi/:id' element={<TvojiOglasi />} />
-              <Route path='/TvojePonude/:id' element={<TvojePonude />} />
-              <Route path='/Oglasi/:id' element={<SinglePost />}></Route>
-              <Route path='/PostaviOglas' element={<PostaviOglas />} />
-            </Route>
-            <Route path='*' element={<NotFound />}></Route>
-          </Routes>
-        </ScrollToTop>
-      </AuthContext.Provider>
-      <Footer />
+      <UserIdContext.Provider value={{ userId, setUserId }}>
+        <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+          <Header />
+          <ScrollToTop>
+            <Routes>
+              <Route path='/' element={<Home />}></Route>
+              <Route path='/ONama' element={<AboutUs />}></Route>
+              <Route path='/Kontakt' element={<Contact />}></Route>
+              <Route path='/Prijavljivanje' element={<Login />}></Route>
+              <Route path='/Registracija' element={<Reg />}></Route>
+              <Route path='/Oglasi' element={<Oglasi />}></Route>
+              <Route element={<ProtectedRoute />}>
+                <Route path='/Profil/:id' element={<Profil />} />
+                <Route path='/TvojiOglasi/:id' element={<TvojiOglasi />} />
+                <Route path='/TvojePonude/:id' element={<TvojePonude />} />
+                <Route path='/Oglasi/:id' element={<SinglePost />}></Route>
+                <Route path='/PostaviOglas' element={<PostaviOglas />} />
+              </Route>
+              <Route path='*' element={<NotFound />}></Route>
+            </Routes>
+          </ScrollToTop>
+          <Footer />
+        </AuthContext.Provider>
+      </UserIdContext.Provider>
     </Router>
 
 

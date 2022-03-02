@@ -10,7 +10,15 @@ import {
   InputRightElement,
   FormControl,
   Text,
-  Link
+  Link,
+  useDisclosure,
+  AlertDialogFooter,
+  AlertDialogBody,
+  AlertDialogCloseButton,
+  AlertDialogHeader,
+  AlertDialogContent,
+  AlertDialogOverlay,
+  AlertDialog
 } from '@chakra-ui/react';
 import {
   InfoIcon,
@@ -21,6 +29,7 @@ import { Link as ReactLink } from 'react-router-dom';
 import Axios from 'axios';
 
 const Reg = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [show, setShow] = React.useState(false)
   const handleClick = () => setShow(!show)
 
@@ -46,11 +55,12 @@ const Reg = () => {
 
   function onSubmit(e) {
     e.preventDefault();
-    console.log(data)
     Axios.post(url,
       data)
       .then(res => {
         setIsSubmit(true);
+      }).catch((error) => {
+        onOpen();
       })
   };
 
@@ -157,7 +167,32 @@ const Reg = () => {
 
       </form>)}
   </Box>
-  </Center></Center>);
+  </Center>
+    <AlertDialog
+      motionPreset='slideInBottom'
+      onClose={onClose}
+      isOpen={isOpen}
+      isCentered
+    >
+      <AlertDialogOverlay />
+
+      <AlertDialogContent>
+        <AlertDialogHeader>Greška</AlertDialogHeader>
+        <AlertDialogCloseButton />
+        <AlertDialogBody>
+          Došlo je do greške pri registraciji...
+        </AlertDialogBody>
+        <AlertDialogFooter>
+          <Button bgColor='button.normal'
+            color='white'
+            fontWeight='bold'
+            _hover={{ bgColor: 'black', color: 'white' }} _active={{ bgColor: 'black', color: 'white' }} ml={3} onClick={onClose}>
+            Ok
+          </Button>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  </Center>);
 }
 
 export default Reg;

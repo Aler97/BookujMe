@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
     Box,
     Input,
@@ -10,18 +10,34 @@ import {
     InputRightElement,
     FormControl,
     Text,
-    Link
+    Link,
+    AlertDialog,
+    AlertDialogOverlay,
+    AlertDialogContent,
+    AlertDialogHeader,
+    AlertDialogCloseButton,
+    AlertDialogBody,
+    AlertDialogFooter,
+    useDisclosure
 } from '@chakra-ui/react';
 import {
     EmailIcon
 } from '@chakra-ui/icons'
 import { useForm } from "react-hook-form";
-import { Link as ReactLink } from 'react-router-dom';
-import apiCall from '../service/ApiCall';
+import { Link as ReactLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../helpers/AuthContext';
+import { UserIdContext } from '../helpers/userIdContext';
+import axios from 'axios';
+
+
 
 
 
 const Login = () => {
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const { setIsLoggedIn } = useContext(AuthContext);
+    const { setUserId } = useContext(UserIdContext);
+    const navigate = useNavigate();
     const [data, setData] = useState({
         email: "",
         password: ""
@@ -29,15 +45,21 @@ const Login = () => {
     })
     const [show, setShow] = React.useState(false)
     const handleClick = () => setShow(!show)
-
-
     const { register, formState: { errors } } = useForm();
+
+
 
     function onSubmit(e) {
         e.preventDefault();
-        apiCall("/api/token/", { method: "POST", data: { username: data.email, password: data.password } })
+        axios.post("https://api.bookuj.ml/login/", data)
             .then(function (response) {
-                console.log(response)
+                setIsLoggedIn(response.data.access);
+                setUserId(response.data.user_id);
+                localStorage.setItem('token', response.data.access);
+                localStorage.setItem('id', response.data.user_id);
+                navigate('/');
+            }).catch((error) => {
+                onOpen();
             })
 
     };
@@ -107,6 +129,30 @@ const Login = () => {
         </form>
     </Box>
     </Center>
+        <AlertDialog
+            motionPreset='slideInBottom'
+            onClose={onClose}
+            isOpen={isOpen}
+            isCentered
+        >
+            <AlertDialogOverlay />
+
+            <AlertDialogContent>
+                <AlertDialogHeader>Greška</AlertDialogHeader>
+                <AlertDialogCloseButton />
+                <AlertDialogBody>
+                    Došlo je do greške pri registraciji...
+                </AlertDialogBody>
+                <AlertDialogFooter>
+                    <Button bgColor='button.normal'
+                        color='white'
+                        fontWeight='bold'
+                        _hover={{ bgColor: 'black', color: 'white' }} _active={{ bgColor: 'black', color: 'white' }} ml={3} onClick={onClose}>
+                        Ok
+                    </Button>
+                </AlertDialogFooter>
+            </AlertDialogContent>
+        </AlertDialog>
     </Center>);
 }
 export default Login;
