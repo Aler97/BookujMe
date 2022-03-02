@@ -35,7 +35,7 @@ const Login = () => {
 
     function onSubmit(e) {
         e.preventDefault();
-        apiCall("/api/token/", { method: "POST", data: { username: "aleksandar@gmail.com", password: "aleksandar123" } })
+        apiCall("/api/token/", { method: "POST", data: { username: data.email, password: data.password } })
             .then(function (response) {
                 console.log(response)
             })

@@ -33,8 +33,8 @@ const Reg = () => {
     first_name: "",
     last_name: "",
     email: "",
-    city: "",
-    password: ""
+    password: "",
+    city: ""
 
   })
   function handle(e) {
@@ -46,13 +46,9 @@ const Reg = () => {
 
   function onSubmit(e) {
     e.preventDefault();
-    Axios.post(url, {
-      first_name: data.first_name,
-      last_name: data.last_name,
-      email: data.email,
-      city: data.city,
-      password: data.password
-    })
+    console.log(data)
+    Axios.post(url,
+      data)
       .then(res => {
         setIsSubmit(true);
       })
