@@ -23,7 +23,7 @@ function Header() {
 
     const logOut = () => {
         setIsLoggedIn(false);
-        setUserId('');
+        setUserId('id');
         localStorage.removeItem('token');
         localStorage.removeItem('id');
         navigate('/')
