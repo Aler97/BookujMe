@@ -141,7 +141,7 @@ const Login = () => {
                 <AlertDialogHeader>Greška</AlertDialogHeader>
                 <AlertDialogCloseButton />
                 <AlertDialogBody>
-                    Došlo je do greške pri registraciji...
+                    Došlo je do greške pri prijavljivanju...
                 </AlertDialogBody>
                 <AlertDialogFooter>
                     <Button bgColor='button.normal'
