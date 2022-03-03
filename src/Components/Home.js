@@ -40,11 +40,11 @@ const Home = () => {
                     <Text fontSize={['xl', '3xl']} fontWeight={['semibold', 'semibold']}> Razmjena Knjiga</Text>
                     <Text fontSize={['5xl', '8xl']} fontWeight={['bold', 'bold']} > Bookuj.me</Text>
                     <Text fontSize={['m', 'l']} fontWeight={['bold', 'bold']}> Vebsajt Bookuj.me nastao je sa idejom da kroz jednostavan interfejs omogući korisnicima razmjenu/trgovinu polovnih veoma očuvanih knjiga.ebsajt Bookuj.me nastao je sa idejom da kroz jednostava.ebsajt Bookuj.me nastao je sa idejom da kroz jednostavaebsajt Bookuj.me nastao je sa idejom da kroz jednebsajt Bookuj.me nastao je sa idejom da kroz jedn...ebsajt Bookuj.me nastao je sa idejom da kroz jednebsajt Bookujda kroz jedn...</Text>
-                    {!isLoggedIn ? <Link as={ReactLink} to='/Registracija' w='40%'><Button width='100%' bgColor='button.normal'
+                    {!isLoggedIn ? <Link as={ReactLink} to='/registracija' w='40%'><Button width='100%' bgColor='button.normal'
                         color='white'
                         fontWeight='bold'
                         _hover={{ bgColor: 'black', color: 'white' }} _active={{ bgColor: 'black', color: 'white' }}
-                    >Registruj se</Button></Link> : <Link as={ReactLink} to='/PostaviOglas' w='40%'><Button width='100%' bgColor='button.normal'
+                    >Registruj se</Button></Link> : <Link as={ReactLink} to='/postavi-oglas' w='40%'><Button width='100%' bgColor='button.normal'
                         color='white'
                         fontWeight='bold'
                         _hover={{ bgColor: 'black', color: 'white' }} _active={{ bgColor: 'black', color: 'white' }}

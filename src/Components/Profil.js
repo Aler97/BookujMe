@@ -12,13 +12,16 @@ import {
     Text,
     FormControl,
     FormLabel,
-    Input
+    Input,
+    InputGroup,
+    InputRightElement
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import ProfilSidebar from './ProfilSidebar';
 import { UserIdContext } from '../helpers/userIdContext';
 import { AuthContext } from '../helpers/AuthContext';
 import axios from 'axios';
+import apiCall from '../service/ApiCall';
 
 
 
@@ -29,9 +32,12 @@ function Profil() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [city, setCity] = useState('');
     const { isOpen, onOpen, onClose } = useDisclosure();
     const navigate = useNavigate();
+    const [show, setShow] = React.useState(false);
+    const handleClick = () => setShow(!show);
 
     useEffect(() => {
         axios.get(`https://api.bookuj.ml/users/${userId}`)
@@ -41,33 +47,29 @@ function Profil() {
                 setEmail(response.data.email);
                 setCity(response.data.city);
             })
+
     }, [userId])
 
 
     const onSubmit = (e) => {
         e.preventDefault();
         axios.put(`https://api.bookuj.ml/users/${userId}`, {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            },
             data: {
-                first_name: firstName,
-                last_name: lastName,
-                email: email,
-                city: city
-            }
+                "first_name": firstName,
+                "last_name": lastName,
+                "password": password,
+                "city": city
+            },
+            headers: { "Authorization": `Bearer ${localStorage.getItem('token')}` }
+
         }
         ).then(() => { setEditInfo(false) })
-            .catch((error) => { console.log(error); window.location.reload() })
+            .catch((error) => { console.log(error); })
 
     }
 
     const deleteProfile = () => {
-        axios.delete(`https://api.bookuj.ml/users/${userId}`, {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        })
+        apiCall.delete(`/users/${userId}`, { headers: { "Authorization": `Bearer ${localStorage.getItem('token')}` } })
             .then(() => {
                 setUserId('');
                 setIsLoggedIn(false);
@@ -120,8 +122,26 @@ function Profil() {
                         <Input type='text' isRequired id='ime' value={firstName} onChange={(e) => { setFirstName(e.target.value) }} />
                         <FormLabel htmlFor='prezime' marginTop='20px'><b>Prezime:</b></FormLabel>
                         <Input type='text' isRequired id='prezime' value={lastName} onChange={(e) => { setLastName(e.target.value) }} />
-                        <FormLabel htmlFor='email' marginTop='20px' ><b>E-mail:</b></FormLabel>
-                        <Input type='email' isRequired id='email' value={email} onChange={(e) => { setEmail(e.target.value) }} />
+                        <FormLabel htmlFor='password' marginTop='20px'><b>Lozinka:</b></FormLabel>
+                        <InputGroup>
+
+                            <Input
+                                type={show ? 'text' : 'password'}
+                                isRequired
+                                placeholder='Unesi Lozinku'
+                                backgroundColor='white'
+                                id="password"
+                                value={password}
+                                onChange={(e) => { setPassword(e.target.value) }}
+                            />
+
+                            <InputRightElement width='4.5rem' zIndex={0}>
+                                <Button h='1.75rem' size='sm' onClick={handleClick}>
+                                    {show ? 'Sakrij' : 'Prikaži'}
+                                </Button>
+                            </InputRightElement>
+
+                        </InputGroup>
                         <FormLabel htmlFor='grad' marginTop='20px'><b>Grad:</b></FormLabel>
                         <Input type='grad' isRequired id='grad' value={city} onChange={(e) => { setCity(e.target.value) }} />
                         <Button width='48%' bgColor='button.normal'

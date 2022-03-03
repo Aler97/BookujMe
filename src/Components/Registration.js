@@ -163,7 +163,7 @@ const Reg = () => {
           >Registruj Se</Button>
         </Stack>
 
-        <Text marginTop='15px' float='right'>Ako već imate nalog <Link as={ReactLink} to='/Prijavljivanje' fontWeight='semibold'>Ulogujte se</Link></Text>
+        <Text marginTop='15px' float='right'>Ako već imate nalog <Link as={ReactLink} to='/prijavljivanje' fontWeight='semibold'>Ulogujte se</Link></Text>
 
       </form>)}
   </Box>

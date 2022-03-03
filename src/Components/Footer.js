@@ -15,13 +15,13 @@ function Footer() {
             <Flex dir='row' gap={['15px', '20px', '80px']}>
                 <Flex fontSize={['12px', '15px', '20px']} gap={['5px', '10px', '10px', '30px']} direction='column'>
                     <Link as={ReactLink} to='/'>Početna Strana</Link>
-                    <Link as={ReactLink} to='/ONama'>O Nama</Link>
-                    <Link as={ReactLink} to='/Kontakt'>Kontakt</Link>
+                    <Link as={ReactLink} to='/o-nama'>O Nama</Link>
+                    <Link as={ReactLink} to='/kontakt'>Kontakt</Link>
                 </Flex>
                 <Flex fontSize={['12px', '15px', '20px']} gap={['5px', '10px', '10px', '30px']} direction='column'>
-                    <Link as={ReactLink} to='/Oglasi' >Svi Oglasi</Link>
-                    <Link as={ReactLink} to={`/Profil/${userId}`}>Moj Profil</Link>
-                    <Link as={ReactLink} to='/Registracija' >Registruj Se</Link>
+                    <Link as={ReactLink} to='/oglasi' >Svi Oglasi</Link>
+                    <Link as={ReactLink} to={`/profil/${userId}`}>Moj Profil</Link>
+                    <Link as={ReactLink} to='/registracija' >Registruj Se</Link>
                 </Flex>
             </Flex>
         </Flex>

@@ -47,17 +47,17 @@ function App() {
           <ScrollToTop>
             <Routes>
               <Route path='/' element={<Home />}></Route>
-              <Route path='/ONama' element={<AboutUs />}></Route>
-              <Route path='/Kontakt' element={<Contact />}></Route>
-              <Route path='/Prijavljivanje' element={<Login />}></Route>
-              <Route path='/Registracija' element={<Reg />}></Route>
-              <Route path='/Oglasi' element={<Oglasi />}></Route>
+              <Route path='/o-nama' element={<AboutUs />}></Route>
+              <Route path='/kontakt' element={<Contact />}></Route>
+              <Route path='/prijavljivanje' element={<Login />}></Route>
+              <Route path='/registracija' element={<Reg />}></Route>
+              <Route path='/oglasi' element={<Oglasi />}></Route>
               <Route element={<ProtectedRoute />}>
-                <Route path='/Profil/:id' element={<Profil />} />
-                <Route path='/TvojiOglasi/:id' element={<TvojiOglasi />} />
-                <Route path='/TvojePonude/:id' element={<TvojePonude />} />
-                <Route path='/Oglasi/:id' element={<SinglePost />}></Route>
-                <Route path='/PostaviOglas' element={<PostaviOglas />} />
+                <Route path='/profil/:id' element={<Profil />} />
+                <Route path='/moji-oglasi/:id' element={<TvojiOglasi />} />
+                <Route path='/moje-ponude/:id' element={<TvojePonude />} />
+                <Route path='/oglasi/:id' element={<SinglePost />}></Route>
+                <Route path='/postavi-oglas' element={<PostaviOglas />} />
               </Route>
               <Route path='*' element={<NotFound />}></Route>
             </Routes>

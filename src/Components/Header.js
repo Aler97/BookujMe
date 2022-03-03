@@ -34,9 +34,9 @@ function Header() {
         {isLargerThan850 ? <Flex w={{ md: '60%', xl: '45%' }} justifyContent='space-evenly' alignItems='center'>
             <Link fontSize={[20]} _hover={{ textDecoration: 'none', borderBottom: '1px solid black' }} as={ReactLink} to='/' _activeLink={{ fontWeight: 'extrabold' }}>Početna</Link>
             <Spacer />
-            <Link fontSize={[20]} _hover={{ textDecoration: 'none', borderBottom: '1px solid black' }} as={ReactLink} to='/ONama' _activeLink={{ fontWeight: 'extrabold' }}>O Nama</Link>
+            <Link fontSize={[20]} _hover={{ textDecoration: 'none', borderBottom: '1px solid black' }} as={ReactLink} to='/o-nama' _activeLink={{ fontWeight: 'extrabold' }}>O Nama</Link>
             <Spacer />
-            <Link fontSize={[20]} _hover={{ textDecoration: 'none', borderBottom: '1px solid black' }} as={ReactLink} to='/Kontakt' _activeLink={{ fontWeight: 'extrabold' }}>Kontakt</Link>
+            <Link fontSize={[20]} _hover={{ textDecoration: 'none', borderBottom: '1px solid black' }} as={ReactLink} to='/kontakt' _activeLink={{ fontWeight: 'extrabold' }}>Kontakt</Link>
             <Spacer />
             {!isLoggedIn ? <Link as={ReactLink} to='/Prijavljivanje'><Button border='1px solid black' fontWeight='light' bgColor='transparent' borderRadius='0' fontSize={20} py='6' _hover={{ boxShadow: '0 0 10px black' }} _active={{ transform: 'scale(0.95)' }} >Prijavi Se</Button></Link>
                 :
@@ -51,12 +51,12 @@ function Header() {
 
                     />
                     <MenuList>
-                        <Link as={ReactLink} to={`/Profil/${userId}`} _hover={{ textDecoration: 'none' }}>
+                        <Link as={ReactLink} to={`/profil/${userId}`} _hover={{ textDecoration: 'none' }}>
                             <MenuItem>
                                 Profil
                             </MenuItem>
                         </Link>
-                        <Link as={ReactLink} to='/PostaviOglas' _hover={{ textDecoration: 'none' }}>
+                        <Link as={ReactLink} to='/postavi-oglas' _hover={{ textDecoration: 'none' }}>
                             <MenuItem>
                                 Postavi Oglas
                             </MenuItem>
@@ -81,12 +81,12 @@ function Header() {
 
                         />
                         <MenuList>
-                            <Link as={ReactLink} to={`/Profil/${userId}`} _hover={{ textDecoration: 'none' }}>
+                            <Link as={ReactLink} to={`/profil/${userId}`} _hover={{ textDecoration: 'none' }}>
                                 <MenuItem>
                                     Profil
                                 </MenuItem>
                             </Link>
-                            <Link as={ReactLink} to='/PostaviOglas' _hover={{ textDecoration: 'none' }}>
+                            <Link as={ReactLink} to='/postavi-oglas' _hover={{ textDecoration: 'none' }}>
                                 <MenuItem>
                                     Postavi Oglas
                                 </MenuItem>
@@ -112,8 +112,8 @@ function Header() {
 
                         <DrawerBody display='flex' flexDirection='column' justifyContent='flex-start' alignItems='center' mt='40px' gap='10px'>
                             <Link fontSize={[20]} _hover={{ textDecoration: 'none' }} onClick={onClose} as={ReactLink} to='/' >Početna</Link>
-                            <Link fontSize={[20]} _hover={{ textDecoration: 'none' }} onClick={onClose} as={ReactLink} to='/ONama' >O Nama</Link>
-                            <Link fontSize={[20]} _hover={{ textDecoration: 'none' }} onClick={onClose} as={ReactLink} to='/Kontakt' >Kontakt</Link>
+                            <Link fontSize={[20]} _hover={{ textDecoration: 'none' }} onClick={onClose} as={ReactLink} to='/o-nama' >O Nama</Link>
+                            <Link fontSize={[20]} _hover={{ textDecoration: 'none' }} onClick={onClose} as={ReactLink} to='/kontakt' >Kontakt</Link>
                         </DrawerBody>
 
 

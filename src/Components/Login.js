@@ -32,7 +32,6 @@ import axios from 'axios';
 
 
 
-
 const Login = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { setIsLoggedIn } = useContext(AuthContext);
@@ -125,7 +124,7 @@ const Login = () => {
 
                 <Button type='submit' boxShadow='sm' _hover={{ boxShadow: 'md' }} >Uloguj Se</Button>
             </Stack>
-            <Text marginTop='15px' float='right' fontWeight='thin'>Ako nemate nalog <Link as={ReactLink} to='/Registracija' fontWeight='semibold'>Registrujte se</Link></Text>
+            <Text marginTop='15px' float='right' fontWeight='thin'>Ako nemate nalog <Link as={ReactLink} to='/registracija' fontWeight='semibold'>Registrujte se</Link></Text>
         </form>
     </Box>
     </Center>
