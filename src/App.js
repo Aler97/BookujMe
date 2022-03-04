@@ -53,9 +53,9 @@ function App() {
               <Route path='/registracija' element={<Reg />}></Route>
               <Route path='/oglasi' element={<Oglasi />}></Route>
               <Route element={<ProtectedRoute />}>
-                <Route path='/profil/:id' element={<Profil />} />
-                <Route path='/moji-oglasi/:id' element={<TvojiOglasi />} />
-                <Route path='/moje-ponude/:id' element={<TvojePonude />} />
+                <Route path={`/profil/${userId}`} element={<Profil />} />
+                <Route path={`/moji-oglasi/${userId}`} element={<TvojiOglasi />} />
+                <Route path={`/moje-ponude/${userId}`} element={<TvojePonude />} />
                 <Route path='/oglasi/:id' element={<SinglePost />}></Route>
                 <Route path='/postavi-oglas' element={<PostaviOglas />} />
               </Route>

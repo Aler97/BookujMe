@@ -38,7 +38,7 @@ function Header() {
             <Spacer />
             <Link fontSize={[20]} _hover={{ textDecoration: 'none', borderBottom: '1px solid black' }} as={ReactLink} to='/kontakt' _activeLink={{ fontWeight: 'extrabold' }}>Kontakt</Link>
             <Spacer />
-            {!isLoggedIn ? <Link as={ReactLink} to='/Prijavljivanje'><Button border='1px solid black' fontWeight='light' bgColor='transparent' borderRadius='0' fontSize={20} py='6' _hover={{ boxShadow: '0 0 10px black' }} _active={{ transform: 'scale(0.95)' }} >Prijavi Se</Button></Link>
+            {!isLoggedIn ? <Link as={ReactLink} to='/prijavljivanje' _hover={{ textDecoration: "none" }}><Button border='1px solid black' fontWeight='light' bgColor='transparent' borderRadius='0' fontSize={20} py='6' _hover={{ boxShadow: '0 0 10px black' }} _active={{ transform: 'scale(0.95)' }} >Prijavi Se</Button></Link>
                 :
                 <Menu>
                     <MenuButton
@@ -69,7 +69,7 @@ function Header() {
 
         </Flex> :
             <Flex justifyContent='space-evenly' alignItems='center' gap='5px'>
-                {!isLoggedIn ? <Link as={ReactLink} to='/Prijavljivanje' ><Button border='1px solid black' fontWeight='light' bgColor='transparent' borderRadius='0' fontSize={12} _hover={{ boxShadow: '0 0 10px black', textDecoration: 'none' }} _active={{ transform: 'scale(0.95)' }} >Prijavi Se</Button></Link>
+                {!isLoggedIn ? <Link as={ReactLink} to='/prijavljivanje' _hover={{ textDecoration: "none" }}><Button border='1px solid black' fontWeight='light' bgColor='transparent' borderRadius='0' fontSize={12} _hover={{ boxShadow: '0 0 10px black', textDecoration: 'none' }} _active={{ transform: 'scale(0.95)' }} >Prijavi Se</Button></Link>
                     : <Menu>
                         <MenuButton
                             as={Button}
