@@ -26,7 +26,7 @@ import TvojePonude from './Components/TvojePonude';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState();
-  const [userId, setUserId] = useState('');
+  const [userId, setUserId] = useState('id');
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
