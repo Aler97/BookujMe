@@ -11,6 +11,7 @@ import {
   FormControl,
   Text,
   Link,
+  Select,
   useDisclosure,
   AlertDialogFooter,
   AlertDialogBody,
@@ -106,16 +107,27 @@ const Reg = () => {
             </InputGroup>
           </FormControl>
           <FormControl isRequired>
-            <InputGroup>
-              <InputLeftElement children={<InfoIcon />} />
-              <Input type='text'
+           <Select type='text'
                 placeholder='Grad'
                 backgroundColor='white'
                 {...register("City")}
                 onChange={(e) => handle(e)}
                 id="city"
-                value={data.city} />
-            </InputGroup>
+                value={data.city} >
+                  <option value='Podgorica'>Podgorica</option>
+                  <option value='Niksic'>Nikšić</option>
+                  <option value='Bar'>Bar</option>
+                  <option value='Berane'>Berane</option>
+                  <option value='Bijelo Polje'>Bijelo Polje</option>
+                  <option value='Tivat'>Tivat</option>
+                  <option value='Budva'>Budva</option>
+                  <option value='Kotor'>Kotor</option>
+                  <option value='Herceg Novi'>Herceg Novi</option>
+                  <option value='Danilovgrad'>Danilovgrad</option>
+                  <option value='Ulcinj'>Ulcinj</option>
+                  <option value='Andrijevica'>Andrijevica</option>
+                </Select>
+           
           </FormControl>
           <FormControl isRequired>
             <InputGroup>
