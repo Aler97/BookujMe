@@ -107,27 +107,36 @@ const Reg = () => {
             </InputGroup>
           </FormControl>
           <FormControl isRequired>
-           <Select type='text'
-                placeholder='Grad'
-                backgroundColor='white'
-                {...register("City")}
-                onChange={(e) => handle(e)}
-                id="city"
-                value={data.city} >
-                  <option value='Podgorica'>Podgorica</option>
-                  <option value='Niksic'>Nikšić</option>
-                  <option value='Bar'>Bar</option>
-                  <option value='Berane'>Berane</option>
-                  <option value='Bijelo Polje'>Bijelo Polje</option>
-                  <option value='Tivat'>Tivat</option>
-                  <option value='Budva'>Budva</option>
-                  <option value='Kotor'>Kotor</option>
-                  <option value='Herceg Novi'>Herceg Novi</option>
-                  <option value='Danilovgrad'>Danilovgrad</option>
-                  <option value='Ulcinj'>Ulcinj</option>
-                  <option value='Andrijevica'>Andrijevica</option>
-                </Select>
-           
+            <Select type='text'
+              placeholder='Grad'
+              backgroundColor='white'
+              {...register("City")}
+              onChange={(e) => handle(e)}
+              id="city"
+              value={data.city} >
+              <option value='Podgorica'>Podgorica</option>
+              <option value='Niksic'>Nikšić</option>
+              <option value='Bar'>Bar</option>
+              <option value='Berane'>Berane</option>
+              <option value='Bijelo Polje'>Bijelo Polje</option>
+              <option value='Tivat'>Tivat</option>
+              <option value='Budva'>Budva</option>
+              <option value='Kotor'>Kotor</option>
+              <option value='Herceg Novi'>Herceg Novi</option>
+              <option value='Danilovgrad'>Danilovgrad</option>
+              <option value='Ulcinj'>Ulcinj</option>
+              <option value='Andrijevica'>Andrijevica</option>
+              <option value='Žabljak'>Žabljak</option>
+              <option value='Pljevlja'>Pljevlja</option>
+              <option value='Cetinje'>Cetinje</option>
+              <option value='Rožaje'>Rožaje</option>
+              <option value='Mojkovac'>Mojkovac</option>
+              <option value='Plav'>Plav</option>
+              <option value='Kolašin'>Kolašin</option>
+              <option value='Plužine'>Plužine</option>
+              <option value='Šavnik'>Šavnik</option>
+            </Select>
+
           </FormControl>
           <FormControl isRequired>
             <InputGroup>

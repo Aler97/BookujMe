@@ -54,80 +54,25 @@ function PostaviOglas() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        if ((sale === 'false' && exchange === 'true') || (sale === 'false' && exchange === 'false')) {
-            ApiCall.post("/books/", {
-                data: {
 
-                    name: data.name,
-                    author: '2',
-                    genre: data.genre,
-                    edition: data.edition,
-                    preservation_level: data.preservation_level,
-                    for_exchange: exchange,
-                    for_sale: sale
+        ApiCall.post("/books/", {
+            data: {
 
-
-                }
+                name: data.name,
+                author: data.author,
+                genre: data.genre,
+                edition: data.edition,
+                preservation_level: data.preservation_level,
+                for_exchange: exchange
             }
-            ).catch((error) => {
-                if (401 === error.response.status) {
-                    logOut();
-                } else {
-                    console.log(error)
-                }
-
-            })
-        } else if (sale === 'true' && exchange === 'true') {
-            ApiCall.post("/books/", {
-                data: {
-
-                    name: data.name,
-                    author: '2',
-                    genre: data.genre,
-                    edition: data.edition,
-                    preservation_level: data.preservation_level,
-                    for_exchange: exchange,
-                    for_sale: sale,
-                    price: price
-
-
-                }
-            }
-            ).catch((error) => {
-                if (401 === error.response.status) {
-                    logOut();
-                } else {
-                    console.log(error)
-                }
-
-            })
-        } else if (sale === 'true' && exchange === 'false') {
-            ApiCall.post("/books/", {
-                data: {
-
-                    name: data.name,
-                    author: '2',
-                    genre: data.genre,
-                    edition: data.edition,
-                    preservation_level: data.preservation_level,
-                    for_sale: sale,
-                    price: price,
-                    for_exchange: exchange
-
-
-                }
-            }
-            ).catch((error) => {
-                if (401 === error.response.status) {
-                    logOut();
-                } else {
-                    console.log(error)
-                }
-
-            })
         }
-
-
+        ).catch((error) => {
+            if (401 === error.response.status) {
+                logOut();
+            } else {
+                console.log(error)
+            }
+        })
     }
 
 
