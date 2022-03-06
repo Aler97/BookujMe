@@ -67,7 +67,7 @@ function PostaviOglas() {
                     for_sale: sale
 
 
-                }, headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+                }
             }
             ).catch((error) => {
                 if (401 === error.response.status) {
@@ -91,8 +91,7 @@ function PostaviOglas() {
                     price: price
 
 
-                },
-                headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+                }
             }
             ).catch((error) => {
                 if (401 === error.response.status) {
@@ -116,7 +115,7 @@ function PostaviOglas() {
                     for_exchange: exchange
 
 
-                }, headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+                }
             }
             ).catch((error) => {
                 if (401 === error.response.status) {
