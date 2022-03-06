@@ -58,7 +58,7 @@ function Oglasi() {
                 genre={book.genre}
                 key={index}
                 id={book.id}
-            />) : <Grid w='100%' textAlign='center'><Text fontWeight='bold' fontSize={['lg', 'xl', '2xl', '3xl']} >Učitavanje...</Text></Grid>}
+            />) : <Grid w='100vw' textAlign='center'><Text fontWeight='bold' fontSize={['lg', 'xl', '2xl', '3xl']} >Učitavanje...</Text></Grid>}
         </Grid>
     </Box>)
 }
