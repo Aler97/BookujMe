@@ -43,7 +43,7 @@ function TvojiOglasi() {
             <ProfilSidebar />
             <Box w='100%' minH='80vh'>
                 <Grid w='100%' templateColumns={['1fr', '1fr 1fr', '1fr 1fr 1fr', 'repeat(4, 1fr)']} padding={['30px', ' 20px', ' 30px', '40px']} gap='10px' >
-                    {myBooks ? myBooks.map(book => {
+                    {myBooks.length > 0 ? myBooks.map(book => {
                         return (<Oglas key={book.id} id={book.id} name={book.name}
                             author_firstname={book.author.first_name}
                             author_lastname={book.author.last_name}
