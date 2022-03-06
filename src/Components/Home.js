@@ -1,4 +1,4 @@
-import React, { useContext,useState,useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 
 import {
     Text,
@@ -20,20 +20,21 @@ const Home = () => {
     const { isLoggedIn } = useContext(AuthContext);
 
     const [isLargerThan1000] = useMediaQuery('(min-width: 1000px)');
-    const [allBooks,setAllBooks]=useState([]);
+    const [allBooks, setAllBooks] = useState([]);
 
-    const getAllBooks=async() =>{
+
+    const getAllBooks = async () => {
         const res = await fetch(`https://api.bookuj.ml/books`);
         const data = await res.json();
         console.log(data);
         setAllBooks(data)
-        
+
     }
 
 
-    useEffect(()=>{
-getAllBooks();
-    },[])
+    useEffect(() => {
+        getAllBooks();
+    }, [])
 
 
     return (<>
@@ -112,14 +113,17 @@ getAllBooks();
                 spacing='5%'
 
             >
-                 {allBooks.map((book,index)=><Oglas 
-      name={book.name}
-      author_firstname={book.author.first_name}
-      author_lastname={book.author.last_name}
-      preservation_level={book.preservation_level}
-      genre={book.genre}
-      key={index}
-      />)}
+                {allBooks.map((book, index) => {
+                    return <Oglas
+                        name={book.name}
+                        author_firstname={book.author.first_name}
+                        author_lastname={book.author.last_name}
+                        preservation_level={book.preservation_level}
+                        genre={book.genre}
+                        key={index}
+                        id={book.id}
+                    />
+                })}
             </SimpleGrid>
             <Center><Link as={ReactLink} to='/Oglasi' width={['40%', "20%"]} display='flex' justifyContent='center' alignItems='center' _hover={{ textDecoration: 'none' }}><Button mb='5%' bgColor='button.normal'
                 color='white'

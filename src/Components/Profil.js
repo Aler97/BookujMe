@@ -51,6 +51,14 @@ function Profil() {
     }, [userId])
 
 
+    const logOut = () => {
+        setIsLoggedIn(false);
+        setUserId('id');
+        localStorage.removeItem('token');
+        localStorage.removeItem('id');
+        navigate('/prijavljivanje')
+    }
+
     const onSubmit = (e) => {
         e.preventDefault();
         axios.put(`https://api.bookuj.ml/users/${userId}`, {
@@ -64,7 +72,14 @@ function Profil() {
 
         }
         ).then(() => { setEditInfo(false) })
-            .catch((error) => { console.log(error); })
+            .catch((error) => {
+                if (401 === error.response.status) {
+                    logOut();
+                } else {
+                    console.log(error)
+                }
+
+            })
 
     }
 
@@ -78,7 +93,11 @@ function Profil() {
                 navigate('/')
             })
             .catch((error) => {
-                console.log(error)
+                if (401 === error.response.status) {
+                    logOut();
+                } else {
+                    console.log(error)
+                }
             })
 
     }
