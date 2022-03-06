@@ -26,10 +26,10 @@ const Home = () => {
     const getAllBooks = async () => {
         const res = await fetch(`https://api.bookuj.ml/books`);
         const data = await res.json();
-        const item=data.slice(0,3);
+        const item = data.slice(0, 3);
         setAllBooks(item)
 
-        
+
 
     }
 
@@ -56,7 +56,7 @@ const Home = () => {
                 <Stack spacing={6}>
                     <Text fontSize={['xl', '3xl']} fontWeight={['semibold', 'semibold']}> Razmjena Knjiga</Text>
                     <Text fontSize={['5xl', '8xl']} fontWeight={['bold', 'bold']} > Bookuj.me</Text>
-                    <Text fontSize={['m', 'l']} fontWeight={['bold', 'bold']}> Vebsajt Bookuj.me nastao je sa idejom da kroz jednostavan interfejs omogući korisnicima razmjenu/trgovinu polovnih veoma očuvanih knjiga.ebsajt Bookuj.me nastao je sa idejom da kroz jednostava.ebsajt Bookuj.me nastao je sa idejom da kroz jednostavaebsajt Bookuj.me nastao je sa idejom da kroz jednebsajt Bookuj.me nastao je sa idejom da kroz jedn...ebsajt Bookuj.me nastao je sa idejom da kroz jednebsajt Bookujda kroz jedn...</Text>
+                    <Text fontSize={['m', 'l']} fontWeight={['bold', 'bold']}>Pronađi knjigu koju dugo želiš, ponudi knjigu na razmjenu ili plati novcem i uživaj u svojoj novoj knjizi! Postavi svoj oglas, stavi knjigu na razmjenu i ukoliko ti se neka od ponuda svidi prihvati je! Registruj se na Bookuj.me i imaj uvijek knjigu koju poželiš!</Text>
                     {!isLoggedIn ? <Link as={ReactLink} to='/registracija' w='40%'><Button width='100%' bgColor='button.normal'
                         color='white'
                         fontWeight='bold'
