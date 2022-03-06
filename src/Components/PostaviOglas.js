@@ -12,7 +12,6 @@ import {
     SliderMark,
     Stack,
     Button,
-    Select,
     RadioGroup,
     Radio,
 } from '@chakra-ui/react'
@@ -101,17 +100,11 @@ function PostaviOglas() {
                 <FormControl w='100%' h='auto'>
                     <FormLabel htmlFor='nazivKnjige'>Naziv knjige:</FormLabel>
                     <Input id='nazivKnjige' type='text' isRequired placeholder='Naziv knjige' onChange={handleChange} name="name"></Input>
-                    <Select placeholder='Autor' marginTop="30px" onChange={handleChange} name="author">
-                        <option value='option1'>Option 1</option>
-                        <option value='option2'>Option 2</option>
-                        <option value='option3'>Option 3</option>
-                    </Select>
-                    <Select placeholder='Žanr' marginTop="30px" name="genre" onChange={handleChange}>
-                        <option value='option1'>Option 1</option>
-                        <option value='option2'>Option 2</option>
-                        <option value='option3'>Option 3</option>
-                    </Select>
-                    <FormLabel htmlFor='edicija' marginTop="30px">Naziv knjige:</FormLabel>
+                    <FormLabel htmlFor='autor' marginTop="20px">Autor:</FormLabel>
+                    <Input id='autor' type='text' isRequired placeholder='Autor' onChange={handleChange} name="author"></Input>
+                    <FormLabel htmlFor='zanr' marginTop="20px">Žanr</FormLabel>
+                    <Input id='zanr' type='text' isRequired placeholder='Žanr' onChange={handleChange} name="genre"></Input>
+                    <FormLabel htmlFor='edicija' marginTop="20px">Naziv knjige:</FormLabel>
                     <Input id='edicija' type="number" placeholder='Edicija' onChange={handleChange} name="edition"></Input>
                     <FormLabel marginTop='20px'>Očuvanost Knjige:</FormLabel>
                     <Slider defaultValue={5} min={0} max={10} step={1} onChangeEnd={(val) => { setData(prevData => ({ ...prevData, "preservation_level": `${val}` })); }} name="preservation_level">

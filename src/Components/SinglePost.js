@@ -1,4 +1,4 @@
-import { Box, Button, Collapse, Flex, FormControl, FormLabel, Image, Input, Link, Select, Slider, SliderFilledTrack, SliderMark, SliderThumb, SliderTrack, Stat, StatLabel, StatNumber, Text, useDisclosure, useMediaQuery } from "@chakra-ui/react";
+import { Box, Button, Collapse, Flex, FormControl, FormLabel, Image, Input, Link, Slider, SliderFilledTrack, SliderMark, SliderThumb, SliderTrack, Stat, StatLabel, StatNumber, Text, useDisclosure, useMediaQuery } from "@chakra-ui/react";
 import Reading from '../Images/reading.jpg';
 import { Link as ReactLink, useParams } from 'react-router-dom';
 import { useContext, useEffect, useState } from "react";
@@ -80,22 +80,16 @@ function SinglePost() {
 
             </Flex>
             <Collapse in={isOpen} animateOpacity>
-                <Flex w='100%' minH='70vh' marginTop={['40px', '60px', '100px']} flexDirection='column' alignItems='center' gap='10px' padding={['10px', '20px', '30px', '40px', '80px']}>
-                    <Text fontWeight='bold' fontSize='3xl'>Postavi Oglas:</Text>
+                <Flex w='100%' minH='50vh' flexDirection='column' alignItems='center' gap='10px' padding={['10px', '20px', '30px', '40px']}>
+                    < Text fontWeight='bold' fontSize='3xl' > Pošalji ponudu:</Text>
                     <form style={{ border: '1px solid black', padding: '50px', borderRadius: "20px" }} onSubmit={() => { window.alert('Ponuda Poslata') }} >
                         <FormControl w='100%' h='auto'>
                             <FormLabel htmlFor='nazivKnjige'>Naziv knjige:</FormLabel>
                             <Input id='nazivKnjige' type='text' isRequired placeholder='Naziv knjige' onChange={handleChange} name="name"></Input>
-                            <Select placeholder='Autor' marginTop="30px" onChange={handleChange} name="author">
-                                <option value='option1'>Option 1</option>
-                                <option value='option2'>Option 2</option>
-                                <option value='option3'>Option 3</option>
-                            </Select>
-                            <Select placeholder='Žanr' marginTop="30px" name="genre" onChange={handleChange}>
-                                <option value='option1'>Option 1</option>
-                                <option value='option2'>Option 2</option>
-                                <option value='option3'>Option 3</option>
-                            </Select>
+                            <FormLabel htmlFor='autor' marginTop="20px">Autor:</FormLabel>
+                            <Input id='autor' type='text' isRequired placeholder='Autor' onChange={handleChange} name="author"></Input>
+                            <FormLabel htmlFor='zanr' marginTop="20px">Žanr</FormLabel>
+                            <Input id='zanr' type='text' isRequired placeholder='Žanr' onChange={handleChange} name="genre"></Input>
                             <FormLabel htmlFor='edicija' marginTop="30px">Naziv knjige:</FormLabel>
                             <Input id='edicija' type="number" placeholder='Edicija' onChange={handleChange} name="edition"></Input>
                             <FormLabel marginTop='20px'>Očuvanost Knjige:</FormLabel>

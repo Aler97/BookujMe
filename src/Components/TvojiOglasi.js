@@ -50,9 +50,13 @@ function TvojiOglasi() {
                             preservation_level={book.preservation_level}
                             genre={book.genre} />)
                     })
-                        : <Flex w='100%' minHeight='80vh' justifyContent='center' marginTop='50px'>
-                            <Text fontWeight='bold' fontSize={['lg', 'xl', '2xl', '3xl']}>Učitavanje...</Text>
-                        </Flex>}
+                        : myBooks.length === 0 ?
+                            <Flex w='100vw' minHeight='80vh' justifyContent='center' marginTop='50px' textAlign='center'>
+                                <Text fontWeight='bold' fontSize={['lg', 'xl', '2xl', '3xl']}>Nema oglasa...</Text>
+                            </Flex>
+                            : <Flex w='100vw' minHeight='80vh' justifyContent='center' marginTop='50px' textAlign='center'>
+                                <Text fontWeight='bold' fontSize={['lg', 'xl', '2xl', '3xl']}>Učitavanje...</Text>
+                            </Flex>}
 
                 </Grid>
             </Box>

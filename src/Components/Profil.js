@@ -61,14 +61,11 @@ function Profil() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        axios.put(`https://api.bookuj.ml/users/${userId}`, {
+        apiCall.put(`/users/${userId}`, {
             data: {
-                "first_name": firstName,
-                "last_name": lastName,
-                "password": password,
-                "city": city
+                password: 'sasa12345'
             },
-            headers: { "Authorization": `Bearer ${localStorage.getItem('token')}` }
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
 
         }
         ).then(() => { setEditInfo(false) })
@@ -84,7 +81,7 @@ function Profil() {
     }
 
     const deleteProfile = () => {
-        apiCall.delete(`/users/${userId}`, { headers: { "Authorization": `Bearer ${localStorage.getItem('token')}` } })
+        apiCall.delete(`/users/${userId}`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
             .then(() => {
                 setUserId('');
                 setIsLoggedIn(false);
