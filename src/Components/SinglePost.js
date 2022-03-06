@@ -90,7 +90,7 @@ function SinglePost() {
                             <Input id='autor' type='text' isRequired placeholder='Autor' onChange={handleChange} name="author"></Input>
                             <FormLabel htmlFor='zanr' marginTop="20px">Žanr</FormLabel>
                             <Input id='zanr' type='text' isRequired placeholder='Žanr' onChange={handleChange} name="genre"></Input>
-                            <FormLabel htmlFor='edicija' marginTop="30px">Naziv knjige:</FormLabel>
+                            <FormLabel htmlFor='edicija' marginTop="30px">Edicija:</FormLabel>
                             <Input id='edicija' type="number" placeholder='Edicija' onChange={handleChange} name="edition"></Input>
                             <FormLabel marginTop='20px'>Očuvanost Knjige:</FormLabel>
                             <Slider defaultValue={5} min={0} max={10} step={1} onChangeEnd={(val) => { setData(prevData => ({ ...prevData, "preservation_level": `${val}` })); }} name="preservation_level">

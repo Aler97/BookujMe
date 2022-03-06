@@ -15,7 +15,10 @@ import {
     RadioGroup,
     Radio,
 } from '@chakra-ui/react'
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../helpers/AuthContext';
+import { UserIdContext } from '../helpers/userIdContext';
 import ApiCall from '../service/ApiCall';
 
 function PostaviOglas() {
@@ -31,11 +34,23 @@ function PostaviOglas() {
     const [price, setPrice] = useState('false');
 
     const [exchange, setExchange] = useState('true')
+    const { userId, setUserId } = useContext(UserIdContext);
+    const { setIsLoggedIn } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleChange = e => {
 
         setData(prevData => ({ ...prevData, [e.target.name]: e.target.value }));
     }
+
+    const logOut = () => {
+        setIsLoggedIn(false);
+        setUserId('id');
+        localStorage.removeItem('token');
+        localStorage.removeItem('id');
+        navigate('/prijavljivanje')
+    }
+
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -44,51 +59,73 @@ function PostaviOglas() {
                 data: {
 
                     name: data.name,
-                    author: data.author,
+                    author: '2',
                     genre: data.genre,
                     edition: data.edition,
                     preservation_level: data.preservation_level,
-                    for_exchange: true,
-                    for_sale: false
+                    for_exchange: exchange,
+                    for_sale: sale
 
 
-                }
+                }, headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             }
-            )
+            ).catch((error) => {
+                if (401 === error.response.status) {
+                    logOut();
+                } else {
+                    console.log(error)
+                }
+
+            })
         } else if (sale === 'true' && exchange === 'true') {
             ApiCall.post("/books/", {
                 data: {
 
                     name: data.name,
-                    author: data.author,
+                    author: '2',
                     genre: data.genre,
                     edition: data.edition,
                     preservation_level: data.preservation_level,
-                    for_exchange: false,
-                    for_sale: true,
+                    for_exchange: exchange,
+                    for_sale: sale,
                     price: price
 
 
-                }
+                },
+                headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             }
-            )
+            ).catch((error) => {
+                if (401 === error.response.status) {
+                    logOut();
+                } else {
+                    console.log(error)
+                }
+
+            })
         } else if (sale === 'true' && exchange === 'false') {
             ApiCall.post("/books/", {
                 data: {
 
                     name: data.name,
-                    author: data.author,
+                    author: '2',
                     genre: data.genre,
                     edition: data.edition,
                     preservation_level: data.preservation_level,
-                    for_sale: true,
+                    for_sale: sale,
                     price: price,
-                    for_exchange: false
+                    for_exchange: exchange
 
 
-                }
+                }, headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             }
-            )
+            ).catch((error) => {
+                if (401 === error.response.status) {
+                    logOut();
+                } else {
+                    console.log(error)
+                }
+
+            })
         }
 
 
@@ -106,7 +143,7 @@ function PostaviOglas() {
                     <Input id='autor' type='text' isRequired placeholder='Autor' onChange={handleChange} name="author"></Input>
                     <FormLabel htmlFor='zanr' marginTop="20px">Žanr</FormLabel>
                     <Input id='zanr' type='text' isRequired placeholder='Žanr' onChange={handleChange} name="genre"></Input>
-                    <FormLabel htmlFor='edicija' marginTop="20px">Naziv knjige:</FormLabel>
+                    <FormLabel htmlFor='edicija' marginTop="20px">Edicija:</FormLabel>
                     <Input id='edicija' type="number" placeholder='Edicija' onChange={handleChange} name="edition"></Input>
                     <FormLabel marginTop='20px'>Očuvanost Knjige:</FormLabel>
                     <Slider defaultValue={5} min={0} max={10} step={1} onChangeEnd={(val) => { setData(prevData => ({ ...prevData, "preservation_level": `${val}` })); }} name="preservation_level">
