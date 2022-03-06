@@ -63,7 +63,10 @@ function Profil() {
         e.preventDefault();
         apiCall.put(`/users/${userId}`, {
             data: {
-                password: 'sasa12345'
+                first_name: firstName,
+                last_name: lastName,
+                password: password,
+                city: city
             },
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
 
