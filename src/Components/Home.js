@@ -24,10 +24,11 @@ const Home = () => {
 
 
     const getAllBooks = async () => {
-        const res = await fetch(`https://api.bookuj.ml/books`);
-        const data = await res.json();
-        console.log(data);
-        setAllBooks(data)
+
+        const item=data.slice(0,3);
+        setAllBooks(item)
+
+        
 
     }
 
