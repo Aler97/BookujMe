@@ -34,7 +34,7 @@ function PostaviOglas() {
     const [price, setPrice] = useState('false');
 
     const [exchange, setExchange] = useState('true')
-    const { userId, setUserId } = useContext(UserIdContext);
+    const { setUserId } = useContext(UserIdContext);
     const { setIsLoggedIn } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -63,7 +63,9 @@ function PostaviOglas() {
                 genre: data.genre,
                 edition: data.edition,
                 preservation_level: data.preservation_level,
-                for_exchange: exchange
+                for_exchange: exchange,
+                for_sale: sale,
+                price: price
             }
         }
         ).catch((error) => {
