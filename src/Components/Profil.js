@@ -51,25 +51,40 @@ function Profil() {
     }, [userId])
 
 
+    const logOut = () => {
+        setIsLoggedIn(false);
+        setUserId('id');
+        localStorage.removeItem('token');
+        localStorage.removeItem('id');
+        navigate('/prijavljivanje')
+    }
+
     const onSubmit = (e) => {
         e.preventDefault();
-        axios.put(`https://api.bookuj.ml/users/${userId}`, {
+        apiCall.put(`/users/${userId}`, {
             data: {
-                "first_name": firstName,
-                "last_name": lastName,
-                "password": password,
-                "city": city
+                first_name: firstName,
+                last_name: lastName,
+                password: password,
+                city: city
             },
-            headers: { "Authorization": `Bearer ${localStorage.getItem('token')}` }
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
 
         }
         ).then(() => { setEditInfo(false) })
-            .catch((error) => { console.log(error); })
+            .catch((error) => {
+                if (401 === error.response.status) {
+                    logOut();
+                } else {
+                    console.log(error)
+                }
+
+            })
 
     }
 
     const deleteProfile = () => {
-        apiCall.delete(`/users/${userId}`, { headers: { "Authorization": `Bearer ${localStorage.getItem('token')}` } })
+        apiCall.delete(`/users/${userId}`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
             .then(() => {
                 setUserId('');
                 setIsLoggedIn(false);
@@ -78,7 +93,11 @@ function Profil() {
                 navigate('/')
             })
             .catch((error) => {
-                console.log(error)
+                if (401 === error.response.status) {
+                    logOut();
+                } else {
+                    console.log(error)
+                }
             })
 
     }
