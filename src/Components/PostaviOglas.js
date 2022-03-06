@@ -48,7 +48,8 @@ function PostaviOglas() {
                     genre: data.genre,
                     edition: data.edition,
                     preservation_level: data.preservation_level,
-                    for_exchange: exchange
+                    for_exchange: true,
+                    for_sale: false
 
 
                 }
@@ -63,8 +64,8 @@ function PostaviOglas() {
                     genre: data.genre,
                     edition: data.edition,
                     preservation_level: data.preservation_level,
-                    for_exchange: exchange,
-                    for_sale: sale,
+                    for_exchange: false,
+                    for_sale: true,
                     price: price
 
 
@@ -80,8 +81,9 @@ function PostaviOglas() {
                     genre: data.genre,
                     edition: data.edition,
                     preservation_level: data.preservation_level,
-                    for_sale: sale,
-                    price: price
+                    for_sale: true,
+                    price: price,
+                    for_exchange: false
 
 
                 }
