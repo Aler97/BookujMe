@@ -26,7 +26,7 @@ function TvojiOglasi() {
     useEffect(() => {
         ApiCall.get('/books/my/', { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
             .then(response => {
-                setMyBooks(response.data)
+                setMyBooks(response.data);
             })
             .catch(error => {
                 if (401 === error.response.status) {

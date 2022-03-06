@@ -36,7 +36,7 @@ const Oglas = ({ id, name, author_firstname, author_lastname, genre, preservatio
                 <Text marginTop='10px'><b>Naziv Knjige: {name}</b></Text>
                 <Text><b>Autor: {author_firstname} {author_lastname}</b></Text>
                 <Text><b>Očuvanost: {preservation_level}</b></Text>
-                <Text><b>Zanr: {genre}</b></Text>
+                <Text><b>Žanr: {genre}</b></Text>
                 <Link as={ReactLink} to={`/Oglasi/${id}`} alignSelf='center' marginTop='10px'><Button bgColor='button.normal'
                     color='white'
                     fontWeight='bold'
